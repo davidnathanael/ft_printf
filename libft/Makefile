@@ -6,13 +6,13 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2015/12/22 19:56:58 by ddela-cr         ###   ########.fr        #
+#    Updated: 2015/12/29 13:18:36 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	libft.a
 
-CC			=	gcc
+CC			=	gcc -I ../includes
 
 FLAGS		=	-Wall -Wextra -Werror
 
