@@ -1,2 +1,2 @@
 # ft_printf
-ft_printf 42 project
+Project ft_printf @ 42
