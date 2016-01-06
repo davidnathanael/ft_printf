@@ -6,19 +6,24 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/04 21:09:59 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/06 14:28:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <printf.h>
+#include <stdio.h>
 
 int	main()
 {
 	int a, b, c;
-	a = 0;
+	a = 20;
 	b = 1;
 	c = 2;
-	char s = 'r';
-	ft_printf("%d | %d %s | %d\n", a, s, b, c);
+	//char s = 'r';
+	//ft_printf("%d | %d %s | %d %%\n", a, s, b, c);
+	while (a > -20)
+		printf("|% d|\n", a--);
+	while (a < 20)
+		printf("|%+d|\n", a++);
 	return (0);
 }
