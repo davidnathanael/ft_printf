@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strchrstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/08 16:52:36 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/08 16:06:30 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/08 16:07:48 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <printf.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main()
+char		*ft_strchrstr(char *to_search, char *map)
 {
-	int a, b, c;
-	a = 20;
-	b = 1;
-	c = 2;
-	ft_printf("% +-d abc %d ok %s defgh %d testin %% \n");
-	return (0);
+	int		i;
+	char	*ret;
+
+	i = 0;
+	ret = NULL;
+	while (i < (int)ft_strlen(to_search))
+	{
+		if ((ret = ft_strchr(map, to_search[i])) != NULL)
+			return (ret);
+		i++;
+	}
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2015/12/29 13:31:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:07:16 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
 char			*ft_strchr(const char *s, int c);
+char			*ft_strnchr(const char *s, int c, int n);
+char			*ft_strchrstr(char *to_search, char *map);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strstr(const char *s1, const char *s2);
 char			*ft_strnstr(const char *s1, const char *s2, size_t n);
@@ -88,4 +90,5 @@ char			*ft_strupcase(char *str);
 char			*ft_strlowcase(char *str);
 int				ft_isspace(int c);
 char			*ft_strcapitalize(char *str);
+char			*ft_convert_base(unsigned int num, unsigned int base);
 #endif

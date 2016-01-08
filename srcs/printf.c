@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/06 15:28:42 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/08 17:30:24 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,25 @@
 
 static	void	ft_print(char *format, va_list ap, int nb_params)
 {
-	t_list		*list;
+	int		i;
+	int		step;
+	char	*fmt;
 
-	list = ft_set_list(const char *format, ap, nb_params);
+	i = 0;
+	step = 1;
+	fmt = format;
+	while (fmt[i])
+	{
+		step = 1;
+		if (fmt[i] == '%')
+		{
+			step += ft_do_format(&fmt[i], ap);
+		}
+		else
+			ft_putchar(fmt[i]);
+		i += step;
+	}
+	(void)nb_params;
 }
 
 static int ft_count_params(const char * restrict str)
@@ -51,7 +67,7 @@ int ft_printf(const char * restrict format, ...)
 	if (nb_params == 0)
 		ft_putstr((char *)format);
 	va_start(ap, format);
-	ft_print(format, ap, nb_params);
+	ft_print((char *)format, ap, nb_params);
 	va_end(ap);
 	return (0);
 }

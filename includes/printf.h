@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/06 15:16:14 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/08 16:41:48 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@
 # define OCT		500
 # define HEX		600
 
-typedef	int			t_type;
+# include <stdarg.h>
 
-typedef struct		s_list
-{
-	char			*flags;
-	int				precision;
-	t_type			type;
-	struct s_list	next;
-}					t_list;
+typedef	int			t_bool;
+
+# define TRUE 1
+# define FALSE 0
 
 int			ft_printf(const char * restrict format, ...);
+int			ft_do_format(char *format, va_list ap);
 
 #endif

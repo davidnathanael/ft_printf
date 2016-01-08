@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/08 16:52:36 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/07 22:15:19 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/08 13:31:33 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <printf.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	main()
+char	*ft_strnchr(const char *s, int c, int n)
 {
-	int a, b, c;
-	a = 20;
-	b = 1;
-	c = 2;
-	ft_printf("% +-d abc %d ok %s defgh %d testin %% \n");
-	return (0);
+	int		count;
+	char	*str;
+
+	count = 0;
+	str = (char *)s;
+	while (count < n)
+	{
+		str = ft_strchr(str, c);
+		count++;
+		if (count != n)
+			str++;
+		if (!*str)
+			return (NULL);
+	}
+	return (str);
 }
