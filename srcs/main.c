@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/08 16:52:36 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/11 09:18:11 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main()
 	a = 20;
 	b = 1;
 	c = 2;
-	ft_printf("% +-d abc %d ok %s defgh %d testin %% \n");
+	ft_printf("%s abc %d ok %s defgh %d testin %%\n", "esh", 2, "esh", 42);
+	printf("%s abc %d ok %s defgh %d testin %%\n", "esh", 2, "esh", 42);
 	return (0);
 }

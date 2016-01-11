@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/08 16:07:37 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/11 08:46:40 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ LIBFT_LIB	=	libft/libft.a
 
 SRCBASE		=	\
 				format.c													\
+				get_type.c													\
 				main.c														\
 				printf.c
 
