@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/06 12:51:15 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/08 13:37:10 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -28,6 +28,7 @@ ft_strcat.c\
 ft_strncat.c\
 ft_strlcat.c\
 ft_strchr.c\
+ft_strnchr.c\
 ft_strrchr.c\
 ft_strstr.c\
 ft_strnstr.c\
@@ -75,11 +76,12 @@ ft_swap.c\
 ft_strupcase.c\
 ft_strlowcase.c\
 ft_isspace.c\
-ft_strcapitalize.c
+ft_strcapitalize.c\
+ft_convert_base.c
 
 FLAGS	= -Wall -Wextra -Werror
 
-INC		= -I ../includes
+INC		= -I includes
 
 OBJS = $(SRCS:.c=.o)
 

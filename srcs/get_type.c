@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 08:38:09 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/11 09:43:24 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/11 12:46:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,90 +56,90 @@ int		ft_print_d(char *format, va_list ap)
 
 int		ft_print_D(char *format, va_list ap)
 {
-	int		nbr;
+	long int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, long int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_o(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_O(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned long int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned long int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_u(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_U(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned long int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned long int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_x(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_X(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned long int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, unsigned long int);
 	ft_putnbr(nbr);
 	return (0);
 }
 
 int		ft_print_c(char *format, va_list ap)
 {
-	int		nbr;
+	unsigned int		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
-	ft_putnbr(nbr);
+	nbr = (unsigned int)va_arg(ap, int);
+	ft_putchar(nbr);
 	return (0);
 }
 
 int		ft_print_C(char *format, va_list ap)
 {
-	int		nbr;
+	wint_t		nbr;
 	(void)format;
 
-	nbr = va_arg(ap, int);
+	nbr = va_arg(ap, wint_t);
 	ft_putnbr(nbr);
 	return (0);
 }
