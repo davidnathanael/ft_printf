@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:05:18 by ddela-cr          #+#    #+#             */
-/*   Updated: 2015/11/30 20:56:31 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/12 08:38:07 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ char		*ft_itoa(int n)
 	int		nb;
 
 	len = ft_len(n);
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
 	s = (char *)malloc(sizeof(*s) * (len + 1));
 	if (!s)
 		return (NULL);
 	s[len] = '\0';
 	nb = n;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	if (n < 0)
 		nb = -n;
 	while (len != 0)
