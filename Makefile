@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/12 10:09:26 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/12 14:29:31 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,6 @@ SRCBASE		=	\
 				conversions.c												\
 				flags.c														\
 				format.c													\
-				get_type.c													\
 				main.c														\
 				modifiers.c													\
 				printf.c

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/08 17:30:24 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/12 15:59:28 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,59 +15,58 @@
 #include <stdio.h>
 #include <libft.h>
 
-static	void	ft_print(char *format, va_list ap, int nb_params)
+t_bool		ft_skip(char *format)
 {
 	int		i;
-	int		step;
+
+	i = 1;
+	while (ft_is_flag(format[i]) || ft_isdigit(format[i])
+									|| ft_is_modifier(format[i]))
+		i++;
+	return (i);
+}
+
+static int		ft_print(char *format, va_list ap)
+{
+	int		i;
+	int		printed;
 	char	*fmt;
 
 	i = 0;
-	step = 1;
+	printed = 0;
 	fmt = format;
 	while (fmt[i])
 	{
-		step = 1;
 		if (fmt[i] == '%')
 		{
-			step += ft_do_format(&fmt[i], ap);
+			printed += ft_do_format(&fmt[i], ap);
+			i += ft_skip(&fmt[i]) + 1;
+			continue ;
 		}
 		else
+		{
 			ft_putchar(fmt[i]);
-		i += step;
-	}
-	(void)nb_params;
-}
-
-static int ft_count_params(const char * restrict str)
-{
-	int	i;
-	int	count;
-
-	i = 0;
-	count = 0;
-	while (str[i])
-	{
-		if (str[i] == '%' && str[i + 1] != '%' && str[i + 1] != '\0')
-			count++;
-		if (str[i] == '%' && str[i + 1] == '%')
-			i++;
+			printed++;
+		}
 		i++;
 	}
-	return (count);
+	printf("\n\n-> CHARS PRINTED : %d <-\n", printed);
+	return (printed);
 }
 
-int ft_printf(const char * restrict format, ...)
+int 			ft_printf(const char * restrict format, ...)
 {
-	int			nb_params;
 	va_list		ap;
-	int	i;
+	int			ret;
 
-	i = 0;
-	nb_params = ft_count_params(format);
-	if (nb_params == 0)
+	ret = 0;
+	if (!ft_strchr((char *)format, '%'))
+	{
 		ft_putstr((char *)format);
+		return ((int)ft_strlen(format));
+	}
 	va_start(ap, format);
-	ft_print((char *)format, ap, nb_params);
+	ret = ft_print((char *)format, ap);
 	va_end(ap);
 	return (0);
 }
