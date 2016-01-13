@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 10:08:42 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 12:14:46 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/13 15:46:20 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ void	ft_print_options(t_options *options, char *format)
 	printf("\n------- MODIFIER -------\n");
 	printf(" -> modifier : %d\n", options->modifier);
 
-	printf("\n------- TYPE -----------\n");
-	printf(" -> type : %c\n", options->type);
+	printf("\n------- SPECIFIER ------\n");
+	printf(" -> specifier : %c\n", options->specifier);
+
+	printf("\n------- TYPE ----------\n");
+	printf(" -> type : %d\n", options->type);
 	printf("\n--------------------------------------\n");
 }
