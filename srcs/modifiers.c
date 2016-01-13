@@ -6,10 +6,11 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/12 15:59:47 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/13 10:19:25 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 #include "printf.h"
 
@@ -29,14 +30,19 @@ t_bool		ft_is_modifier(char c)
 int		ft_get_modifier(char *format)
 {
 	t_modifier	modifier;
-	char		str[99];
-	(void)str;
 
 	modifier = 0;
-	//ft_strncpy(str, format, ft_skip(format) + 1);
-	//CONTINUE HERE
-	ft_putstr("\n---------|");
-	ft_putstr(format);
-	ft_putstr("|---------\n");
+	if (ft_strstr(format, "ll"))
+			modifier = M_LL;
+	else if (ft_strchr(format, 'l'))
+			modifier = M_L;
+	else if (ft_strstr(format, "hh"))
+			modifier = M_HH;
+	else if (ft_strchr(format, 'h'))
+			modifier = M_H;
+	else if (ft_strchr(format, 'j'))
+			modifier = M_J;
+	else if (ft_strchr(format, 'z'))
+			modifier = M_Z;
 	return (modifier);
 }

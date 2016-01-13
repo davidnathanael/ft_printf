@@ -6,19 +6,22 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:47:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/12 10:33:53 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/13 10:33:41 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include "printf.h"
+#include "libft.h"
 
 static t_flags		*ft_init_flags()
 {
 	t_flags		*flags;
 
 	flags = (t_flags *)malloc(sizeof(t_flags));
+	if (!flags)
+		return (NULL);
 	flags->sharp = FALSE;
 	flags->zero = FALSE;
 	flags->minus = FALSE;
@@ -27,24 +30,28 @@ static t_flags		*ft_init_flags()
 	return (flags);
 }
 
-t_flags		*ft_get_flags(char *format, int skip)
+t_flags		*ft_get_flags(char *format)
 {
+	char		*fmt;
 	t_flags		*flags;
 
+	fmt = format;
 	flags = ft_init_flags();
-	while (skip)
+	if (!flags)
+		return (0);
+	while (*fmt)
 	{
-		if (format[skip] == SHARP)
+		if (*fmt == F_SHARP)
 			flags->sharp = TRUE;
-		if (format[skip] == ZERO)
+		if (*fmt == F_ZERO) /* NEEDS IMPROVEMENT */
 			flags->zero = TRUE;
-		if (format[skip] == MINUS)
+		if (*fmt == F_MINUS)
 			flags->minus = TRUE;
-		if (format[skip] == PLUS)
+		if (*fmt == F_PLUS)
 			flags->plus = TRUE;
-		if (format[skip] == SPACE)
+		if (*fmt == F_SPACE)
 			flags->space = TRUE;
-		skip--;
+		fmt++;
 	}
 	return (flags);
 }
@@ -76,7 +83,7 @@ t_bool		ft_is_flag(char c)
 		return (TRUE);
 	if (c == '0')
 		return (TRUE);
-	if (c == '.')	//precision
+	if (c == '.')	
 		return (TRUE);
 	return (FALSE);
 }

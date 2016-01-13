@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/12 14:29:31 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/13 10:23:01 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,10 +30,12 @@ LIBFT_LIB	=	libft/libft.a
 
 SRCBASE		=	\
 				conversions.c												\
+				debug.c														\
 				flags.c														\
 				format.c													\
 				main.c														\
 				modifiers.c													\
+				precision.c													\
 				printf.c
 
 INCBASE		=	\
