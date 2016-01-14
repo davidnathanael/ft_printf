@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 15:48:17 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 11:48:14 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,29 @@ int		ft_get_modifier(char *format)
 	return (modifier);
 }
 
+t_type		ft_set_type(t_specifier specifier)
+{
+	if (specifier == STR)
+		return (T_CHAR_PTR);
+	if (specifier == WSTR)
+		return (T_WCHAR_T_PTR);
+	if (specifier == PTR)
+		return (T_VOID_PTR);
+	if (specifier == INT || specifier == I_INT)
+		return (T_INT);
+	if (specifier == LONG)
+		return (T_LONG);
+	if (ft_strchr("ouxX", specifier))
+		return (T_UNS_INT);
+	if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG)
+		return (T_UNS_LONG);
+	if (specifier == CHAR)
+		return (T_CHAR);
+	if (specifier == WCHAR)
+		return (T_WCHAR_T);
+	return (ERROR);
+}
+
 t_options	*ft_apply_modifier(t_options *options)
 {
 	t_specifier		specifier;
@@ -61,7 +84,9 @@ t_options	*ft_apply_modifier(t_options *options)
 
 	specifier = options->specifier;
 	modifier = options->modifier;
-	if (modifier == M_L)
+	if (modifier == NO_MODIFIER)
+		options->type = ft_set_type(specifier);
+	else if (modifier == M_L)
 		options->type = ft_apply_l_modifier(specifier);
 	else if (modifier == M_LL)
 		options->type = ft_apply_ll_modifier(specifier);

@@ -33,6 +33,7 @@ SRCBASE		=	\
 				debug.c														\
 				flags.c														\
 				format.c													\
+				get_int_args.c												\
 				main.c														\
 				modifiers.c													\
 				precision.c													\

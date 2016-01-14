@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 15:47:07 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 12:27:08 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@
 int				ft_get_args(t_options *options, va_list ap)
 {
 	int	printed;
-	(void)options;
-	(void)ap;
 
 	printed = 0;
-	return (0);
+	printed = ft_get_int_args(options, ap);
+	return (printed);
 }
 
 t_options		*ft_get_options(char *format)
@@ -67,9 +66,9 @@ int				ft_do_format(char *format, va_list ap)
 		free(options);
 		return (1);
 	}
-	printed = ft_get_args(options, ap);
 	options = ft_apply_modifier(options);
-	ft_print_options(options, ft_strsub(format, 0, ft_skip(format) + 1));
+	printed = ft_get_args(options, ap);
+	//ft_print_options(options, ft_strsub(format, 0, ft_skip(format) + 1));
 	free(options);
 	return (printed);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 12:11:30 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 11:12:27 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int		ft_get_precision(char *format)
 	{
 		while (++fmt && *fmt && ft_isdigit(*fmt))
 			tmp[i++] = *fmt;
+		if (i == 0)
+			ret = 0;
 	}
 	if (i > 0)
 		ret = ft_atoi(tmp);

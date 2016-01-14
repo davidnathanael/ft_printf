@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 15:48:34 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 12:35:50 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,45 +39,52 @@
 # define CHAR				'c'
 # define WCHAR				'C'
 
-# define NO_TYPE			0
-# define T_INT				1
-# define T_UNS_INT			2
-# define T_LONG				3
-# define T_UNS_LONG			4
-# define T_LONG_LONG		5
-# define T_UNS_LONG_LONG	6
-# define T_SHORT			7
-# define T_UNS_SHORT		8
-# define T_SIGNED_CHAR		9
-# define T_UNS_CHAR			10
-# define T_INTMAX_T			11
-# define T_UINTMAX_T		12
-# define T_SIZE_T			13
-# define T_WINT_T			14
-# define T_WCHAR_T			15
-# define T_WCHAR_T_PTR		16
-
 # define F_SHARP			'#'
 # define F_ZERO				'0'
 # define F_MINUS			'-'
 # define F_PLUS				'+'
 # define F_SPACE			' '
 
-# define NO_MODIFIER		0
-# define M_L				1
-# define M_LL				2
-# define M_H				3
-# define M_HH				4
-# define M_J				5
-# define M_Z				6
-
 typedef	int			t_bool;
 
 typedef	int			t_width;
 typedef	int			t_precision;
-typedef	int			t_modifier;
 typedef	int			t_specifier;
-typedef	char		t_type;
+
+typedef enum e_type
+{
+	NO_TYPE,
+	T_INT,
+	T_UNS_INT,
+	T_LONG,
+	T_UNS_LONG,
+	T_LONG_LONG,
+	T_UNS_LONG_LONG,
+	T_SHORT,
+	T_UNS_SHORT,
+	T_SIGNED_CHAR,
+	T_UNS_CHAR,
+	T_INTMAX_T,
+	T_UINTMAX_T,
+	T_SIZE_T,
+	T_WINT_T,
+	T_WCHAR_T,
+	T_WCHAR_T_PTR,
+	T_CHAR,
+	T_CHAR_PTR,
+	T_VOID_PTR,
+}			t_type;
+
+typedef enum		e_modifier
+{
+	NO_MODIFIER,
+	M_L,
+	M_LL,
+	M_H,
+	M_HH,
+	M_J,
+	M_Z,
+}					t_modifier;
 
 typedef struct		s_flags
 {
@@ -112,6 +119,7 @@ int					ft_get_width(char *format);
 int					ft_get_precision(char *format);
 
 t_options	*ft_apply_modifier(t_options *options);
+int		ft_get_int_args(t_options *options, va_list ap);
 
 //DEBUG
 void	ft_print_options(t_options *options, char *format);
