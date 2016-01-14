@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_long_long.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 16:05:18 by ddela-cr          #+#    #+#             */
-/*   Updated: 2015/11/30 20:56:31 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 15:48:32 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include "libft.h"
 
-static int	ft_len(int n)
+static int	ft_len(intmax_t n)
 {
-	int		len;
+	unsigned int		len;
 
 	len = 0;
 	if (n <= 0)
@@ -29,11 +30,11 @@ static int	ft_len(int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char		*ft_itoa_long_long(intmax_t n)
 {
 	char	*s;
 	int		len;
-	int		nb;
+	intmax_t		nb;
 
 	len = ft_len(n);
 	s = (char *)malloc(sizeof(*s) * (len + 1));
@@ -41,8 +42,6 @@ char		*ft_itoa(int n)
 		return (NULL);
 	s[len] = '\0';
 	nb = n;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
 	if (n < 0)
 		nb = -n;
 	while (len != 0)

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 11:48:14 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 14:55:55 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ t_type		ft_apply_hh_modifier(t_specifier specifier)
 
 	type = NO_TYPE;
 	if (specifier == INT || specifier == I_INT)
-		type = T_SIGNED_CHAR;
+		type = T_CHAR;
 	if (specifier == UNS_OCTAL || specifier == UNS_INT
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_CHAR;

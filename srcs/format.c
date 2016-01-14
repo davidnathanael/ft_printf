@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 12:27:08 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 16:17:46 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,19 @@
 #include <string.h>
 #include "libft.h"
 #include "printf.h"
+#include <inttypes.h>
 
 int				ft_get_args(t_options *options, va_list ap)
 {
 	int	printed;
+	intmax_t	int_arg;
+	uintmax_t	uns_int_arg;
 
 	printed = 0;
-	printed = ft_get_int_args(options, ap);
+	if (NO_TYPE < options->type && options->type < T_UNS_INT)
+		int_arg = ft_get_signed_args(options, ap);
+	else if (T_INTMAX_T < options->type && options->type <= T_SIZE_T)
+	uns_int_arg = ft_get_unsigned_args(options, ap);
 	return (printed);
 }
 

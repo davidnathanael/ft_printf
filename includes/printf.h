@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 12:35:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 16:08:52 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define PRINTF_H
 
 # include <stdarg.h>
+#include <inttypes.h>
 
-# define TRUE 				1
-# define FALSE 				0
+# define TRUE				1
+# define FALSE				0
 
 # define ERROR				-1
 # define ERR_STRNEW			-2
@@ -24,9 +25,9 @@
 # define NO_WIDTH			-1
 # define NO_PRECI			-1
 
-# define STR 				's'
-# define WSTR 				'S'
-# define PTR	 			'p'
+# define STR				's'
+# define WSTR				'S'
+# define PTR				'p'
 # define INT				'd'
 # define I_INT				'i'
 # define LONG				'D'
@@ -55,22 +56,21 @@ typedef enum e_type
 {
 	NO_TYPE,
 	T_INT,
-	T_UNS_INT,
 	T_LONG,
-	T_UNS_LONG,
 	T_LONG_LONG,
-	T_UNS_LONG_LONG,
 	T_SHORT,
-	T_UNS_SHORT,
-	T_SIGNED_CHAR,
-	T_UNS_CHAR,
+	T_CHAR,
 	T_INTMAX_T,
+	T_UNS_INT,
+	T_UNS_LONG,
+	T_UNS_LONG_LONG,
+	T_UNS_SHORT,
+	T_UNS_CHAR,
 	T_UINTMAX_T,
 	T_SIZE_T,
 	T_WINT_T,
 	T_WCHAR_T,
 	T_WCHAR_T_PTR,
-	T_CHAR,
 	T_CHAR_PTR,
 	T_VOID_PTR,
 }			t_type;
@@ -118,10 +118,11 @@ int					ft_get_modifier(char *format);
 int					ft_get_width(char *format);
 int					ft_get_precision(char *format);
 
-t_options	*ft_apply_modifier(t_options *options);
-int		ft_get_int_args(t_options *options, va_list ap);
+t_options			*ft_apply_modifier(t_options *options);
+intmax_t			ft_get_signed_args(t_options *options, va_list ap);
+uintmax_t			ft_get_unsigned_args(t_options *options, va_list ap);
 
 //DEBUG
-void	ft_print_options(t_options *options, char *format);
+void				ft_print_options(t_options *options, char *format);
 
 #endif

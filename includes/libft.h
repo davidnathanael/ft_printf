@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/11 10:03:07 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/14 16:03:19 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdint.h>
 
 typedef struct	s_list
 {
@@ -69,6 +70,7 @@ char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(int n);
+char			*ft_itoa_long_long(intmax_t n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);
