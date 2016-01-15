@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 16:24:52 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/15 00:17:22 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # define ERR_STRNEW			-2
 
 # define NO_WIDTH			-1
-# define NO_PRECI			-1
+# define NO_PRECISION		-1
 
 # define STR				's'
 # define WSTR				'S'
@@ -115,12 +115,16 @@ t_bool				ft_is_flag(char c);
 t_bool				ft_skip(char *format);
 t_bool				ft_is_modifier(char c);
 int					ft_get_modifier(char *format);
+
 int					ft_get_width(char *format);
+
 int					ft_get_precision(char *format);
+char				*ft_apply_precision(t_options *options, void *arg);
+t_bool				ft_has_precision(t_precision precision);
 
 t_options			*ft_apply_modifier(t_options *options);
-intmax_t			ft_get_signed_args(t_options *options, va_list ap);
-uintmax_t			ft_get_unsigned_args(t_options *options, va_list ap);
+char				*ft_get_signed_args(t_options *options, va_list ap);
+char				*ft_get_unsigned_args(t_options *options, va_list ap);
 
 //DEBUG
 void				ft_print_options(t_options *options, char *format);

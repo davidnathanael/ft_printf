@@ -14,7 +14,7 @@ NAME		=	ft_printf
 
 NAMEBASE    =   $(shell basename $(NAME))
 
-CC			=	gcc
+CC			=	clang -g -O0
 
 FLAGS		=	-Wall -Wextra -Werror
 
@@ -37,7 +37,8 @@ SRCBASE		=	\
 				main.c														\
 				modifiers.c													\
 				precision.c													\
-				printf.c
+				printf.c													\
+				width.c
 
 INCBASE		=	\
 				libft.h														\
