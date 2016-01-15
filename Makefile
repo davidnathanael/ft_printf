@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/13 10:23:01 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/15 09:56:36 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCBASE		=	\
 				flags.c														\
 				format.c													\
 				get_int_args.c												\
+				get_other_args.c											\
 				main.c														\
 				modifiers.c													\
 				precision.c													\

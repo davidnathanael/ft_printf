@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 16:24:27 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/15 12:34:42 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ t_type		ft_apply_z_modifier(t_specifier specifier)
 
 	type = NO_TYPE;
 	if (specifier == INT || specifier == I_INT)
-		type = T_SIZE_T;
+		type = T_SSIZE_T;
 	if (specifier == UNS_OCTAL || specifier == UNS_INT
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_SIZE_T;

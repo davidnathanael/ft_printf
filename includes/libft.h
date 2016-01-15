@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/14 16:03:19 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/15 10:19:52 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ char			*ft_strupcase(char *str);
 char			*ft_strlowcase(char *str);
 int				ft_isspace(int c);
 char			*ft_strcapitalize(char *str);
-char			*ft_convert_base(unsigned int num, unsigned int base);
+char			*ft_convert_base(intmax_t num, unsigned int base);
+
 #endif

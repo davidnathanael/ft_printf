@@ -6,34 +6,33 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/15 00:17:23 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/15 12:37:33 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <stdlib.h>
+#include <stdint.h>
 #include <string.h>
 #include "libft.h"
 #include "printf.h"
-#include <inttypes.h>
 
 int				ft_get_args(t_options *options, va_list ap)
 {
-	int		printed;
-	char	*arg;
+	wchar_t	*arg;
 
-	printed = 0;
 	arg = NULL;
 	if (NO_TYPE < options->type && options->type < T_UNS_INT)
-		arg = ft_get_signed_args(options, ap);
-	else if (T_INTMAX_T < options->type && options->type <= T_SIZE_T)
-		arg = ft_get_unsigned_args(options, ap);
+		arg = (wchar_t *)ft_get_signed_args(options, ap);
+	else if (T_INTMAX_T < options->type && options->type <= T_SSIZE_T)
+		arg = (wchar_t *)ft_get_unsigned_args(options, ap);
+	else if (T_WCHAR_T_PTR <= options->type && options->type <= T_VOID_PTR)
+		arg = ft_get_ptr_arg(options, ap);
 	if (ft_has_precision(options->precision))
-		arg = ft_apply_precision(options, arg);
-	ft_putstr(arg);
-	free(arg);
-	return (printed);
+		arg = (wchar_t *)ft_apply_precision(options, (char *)arg);
+	printf("%s ", (char *)arg);
+	return (0);
 }
 
 t_options		*ft_get_options(char *format)
