@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 12:11:16 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/18 19:53:23 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static int		ft_print(char *format, va_list ap)
 		}
 		i++;
 	}
-	printf("\n\n-> CHARS PRINTED : %d <-\n", printed);
 	return (printed);
 }
 

@@ -1,0 +1,57 @@
+#* ************************************************************************** *#
+#*                                                                            *#
+#*                                                        :::      ::::::::   *#
+#*   Makefile                                           :+:      :+:    :+:   *#
+#*                                                    +:+ +:+         +:+     *#
+#*   By: mnicolas <mnicolas@student.42.fr>          +#+  +:+       +#+        *#
+#*                                                +#+#+#+#+#+   +#+           *#
+#*   Created: 2016/01/11 14:38:01 by mnicolas          #+#    #+#             *#
+#*   Updated: 2016/01/13 18:22:03 by mnicolas         ###   ########.fr       *#
+#*                                                                            *#
+#* ************************************************************************** *#
+
+FLAGS = -Wall -Werror -Wextra
+
+OBJ =		flags.o		\
+				conversions.o												\
+				debug.o														\
+				format.o													\
+				get_int_args.o												\
+				get_other_args.o											\
+				main.o														\
+				modifiers.o													\
+				precision.o													\
+				printf.o													\
+				width.o
+
+SRC = 		srcs/flags.c		\
+				srcs/conversions.c												\
+				srcs/debug.c														\
+				srcs/format.c													\
+				srcs/get_int_args.c												\
+				srcs/get_other_args.c											\
+				srcs/main.c														\
+				srcs/modifiers.c													\
+				srcs/precision.c													\
+				srcs/printf.c													\
+				srcs/width.c
+
+NAME = libftprintf.a
+
+all : $(NAME)
+
+$(NAME) :
+	@make -C libft
+	@gcc  -c $(FLAGS) $(SRC) -I libft/includes/ -I includes/
+	@ar rc temp.a $(OBJ)
+	@libtool -static -o $(NAME) libft/libft.a temp.a 
+	@rm temp.a
+	@ranlib $(NAME)
+
+clean:
+	@rm -Rf $(OBJ)
+
+fclean: clean
+	@rm -Rf $(NAME) temp.a
+
+re: fclean all

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:11:59 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/15 12:34:48 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/18 19:53:25 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static wchar_t	*ft_get_void_ptr(va_list ap)
 
 	ret = NULL;
 	to_prepend = ft_strdup("0x");
-	arg = (unsigned long)va_arg(ap, void *);
-	ret = ft_strjoin(to_prepend, ft_convert_base(arg, 15));
+	arg = va_arg(ap, unsigned long);
+	ret = ft_strjoin(to_prepend, ft_itoa_base(arg, "0123456789abcdef"));
 	return ((wchar_t *)ret);
 }
 
