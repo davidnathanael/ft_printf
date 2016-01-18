@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 19:53:23 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/18 19:55:46 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int		ft_print(char *format, va_list ap)
 	return (printed);
 }
 
-int 			ft_printf(const char * restrict format, ...)
+int			ft_printf(const char * restrict format, ...)
 {
 	va_list		ap;
 	int			ret;
