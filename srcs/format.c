@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 19:56:38 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 00:36:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int				ft_get_args(t_options *options, va_list ap)
 		arg = (wchar_t *)ft_get_unsigned_args(options, ap);
 	else if (T_WCHAR_T_PTR <= options->type && options->type <= T_VOID_PTR)
 		arg = ft_get_ptr_arg(options, ap);
-	if (ft_has_precision(options->precision))
+	if (options->precision > 0)
 		arg = (wchar_t *)ft_apply_precision(options, (char *)arg);
+	if (options->width > 0)
+		arg = (wchar_t *)ft_apply_width(options, (char *)arg);
 	ft_putstr((char *)arg);
 	return (ft_strlen((char *)arg));
 }

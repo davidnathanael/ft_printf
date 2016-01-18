@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/15 10:55:29 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/18 22:25:54 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,14 +116,14 @@ t_bool				ft_is_flag(char c);
 t_bool				ft_skip(char *format);
 t_bool				ft_is_modifier(char c);
 int					ft_get_modifier(char *format);
+t_options			*ft_apply_modifier(t_options *options);
 
 int					ft_get_width(char *format);
+char				*ft_apply_width(t_options *options, char *arg);
 
 int					ft_get_precision(char *format);
 char				*ft_apply_precision(t_options *options, char *arg);
-t_bool				ft_has_precision(t_precision precision);
 
-t_options			*ft_apply_modifier(t_options *options);
 char				*ft_get_signed_args(t_options *options, va_list ap);
 char				*ft_get_unsigned_args(t_options *options, va_list ap);
 wchar_t				*ft_get_ptr_arg(t_options *options, va_list ap);

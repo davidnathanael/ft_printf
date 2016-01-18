@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 19:53:27 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 00:35:28 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,6 @@ int		ft_get_precision(char *format)
 	return (ret);
 }
 
-t_bool	ft_has_precision(t_precision precision)
-{
-	if (precision == NO_PRECISION)
-		return (FALSE);
-	else
-		return (TRUE);
-}
-
 static char	*ft_prepend_zero(t_precision precision, char *arg)
 {
 	char	*ret;
@@ -60,15 +52,16 @@ static char	*ft_prepend_zero(t_precision precision, char *arg)
 	ret = NULL;
 	arg_tmp = arg;
 	i = 0;
-	len_zero = (size_t)precision - ft_strlen(arg) + 1;
+	len_zero = (size_t)precision - ft_strlen(arg);
 	is_negative = arg_tmp[0] == '-' ? TRUE : FALSE;
 	ret = ft_strnew(is_negative + precision);
 	if (is_negative)
 	{
 		ret[i++] = '-';
+		len_zero += 2;
 		arg_tmp++;
 	}
-	while (i <= len_zero)
+	while (i < len_zero)
 		ret[i++] = '0';
 	while (*arg_tmp)
 		ret[i++] = *(arg_tmp++);
@@ -82,7 +75,7 @@ char	*ft_apply_precision(t_options *options, char *arg)
 
 	ret = NULL;
 	len = ft_strlen(arg);
-	if ((NO_TYPE < options->type && options->type > T_CHAR)
+	if ((NO_TYPE < options->type && options->type < T_CHAR)
 	|| (T_CHAR < options->type && options->type < T_WCHAR_T))
 	{
 		if (options->precision == 0 && ft_atoi(arg) == 0)

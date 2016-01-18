@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/15 17:10:55 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/18 20:27:43 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(unsigned long long n, char *base);
-char			*ft_itoa_long_long(intmax_t n);
+char			*ft_itoa_long_long(long long n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
 void			ft_putendl(char const *s);

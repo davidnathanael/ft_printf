@@ -16,7 +16,7 @@ NAMEBASE    =   $(shell basename $(NAME))
 
 CC			=	clang -g -O0
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra 
 
 SRCDIR		=	srcs/
 

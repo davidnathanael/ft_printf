@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 19:51:21 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 00:38:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 #include <stdio.h>
 #include <libft.h>
 #include <stdint.h>
+#include <limits.h>
 
 int	main()
 {
 	ft_putstr("-------FT_PRINTF TESTS---------\n\n");
-	ft_printf("%p\n", "esh");
-	printf("%p", "esh");
+	printf("%lp", 42);
 /*
 	ft_putstr("\n\n-------PRINTF TESTS---------\n\n");
 	printf("%%o ->\t %o\n", 42);
