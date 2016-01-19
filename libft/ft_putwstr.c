@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putwstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:48:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 09:46:51 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/19 10:17:03 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/19 10:30:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
 
-size_t		ft_putstr(char const *s)
+size_t	ft_putwstr(wchar_t *str)
 {
-	int		nbr;
+	size_t	index;
 
-	if (s)
+	index = 0;
+	while (str[index])
 	{
-		nbr = ft_strlen(s);
-		write(1, s, nbr);
-		return (nbr);
+		ft_putwchar(str[index]);
+		index++;
+		if (str[index])
+			return (--index);
 	}
-	else
-		return (ft_putstr("(null)"));
+	return (index);
 }

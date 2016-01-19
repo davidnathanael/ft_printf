@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:47:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/13 10:33:41 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 13:37:23 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,25 @@ t_bool		ft_is_flag(char c)
 	if (c == '.')	
 		return (TRUE);
 	return (FALSE);
+}
+
+t_flags		*ft_check_flags(t_options *options, char *format)
+{
+	unsigned int		i;
+
+	i = 0;
+	while (format[i])
+	{
+		if (ft_isdigit(format[i]))
+			if (format[i] != '0' && format[i + 1] == '0')
+				options->flags->zero = FALSE;
+		i++;
+	}
+	if (options->precision > 0)
+		options->flags->zero = FALSE;
+	if (options->flags->minus)
+		options->flags->zero = FALSE;
+	if (options->flags->plus)
+		options->flags->space = FALSE;
+	return (options->flags);
 }

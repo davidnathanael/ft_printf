@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/15 09:56:36 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/19 13:01:35 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAMEBASE    =   $(shell basename $(NAME))
 
 CC			=	clang -g -O0
 
-FLAGS		=	-Wall -Wextra 
+FLAGS		=	-Wall -Wextra -Werror
 
 SRCDIR		=	srcs/
 
@@ -29,6 +29,8 @@ LIBFT_DIR	=	libft/
 LIBFT_LIB	=	libft/libft.a
 
 SRCBASE		=	\
+				apply_flags.c												\
+				char.c														\
 				conversions.c												\
 				debug.c														\
 				flags.c														\
@@ -39,6 +41,7 @@ SRCBASE		=	\
 				modifiers.c													\
 				precision.c													\
 				printf.c													\
+				proceed.c													\
 				width.c
 
 INCBASE		=	\

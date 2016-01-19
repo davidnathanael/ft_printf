@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   char.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:48:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 09:46:51 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/19 12:53:41 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/19 13:16:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <string.h>
+#include "printf.h"
 #include "libft.h"
 
-size_t		ft_putstr(char const *s)
+size_t	ft_proceed_char(t_options *options, char *arg)
 {
-	int		nbr;
-
-	if (s)
-	{
-		nbr = ft_strlen(s);
-		write(1, s, nbr);
-		return (nbr);
-	}
-	else
-		return (ft_putstr("(null)"));
+	size_t	ret;
+	(void)options;
+	ret = ft_putstr(arg);
+	return (ret);
 }

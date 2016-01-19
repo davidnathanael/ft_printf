@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 20:27:43 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 10:29:20 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <string.h>
 # include <stdint.h>
+# include <wchar.h>
 
 typedef struct	s_list
 {
@@ -73,7 +74,9 @@ char			*ft_itoa(int n);
 char			*ft_itoa_base(unsigned long long n, char *base);
 char			*ft_itoa_long_long(long long n);
 void			ft_putchar(char c);
-void			ft_putstr(char const *s);
+size_t			ft_putwchar(wchar_t c);
+size_t			ft_putstr(char const *s);
+size_t			ft_putwstr(wchar_t *s);
 void			ft_putendl(char const *s);
 void			ft_putnbr(int n);
 void			ft_putchar_fd(char c, int fd);

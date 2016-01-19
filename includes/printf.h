@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 22:25:54 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 13:36:48 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdarg.h>
 #include <inttypes.h>
+#include <string.h>
 
 # define TRUE				1
 # define FALSE				0
@@ -112,6 +113,8 @@ int					ft_do_format(char *format, va_list ap);
 t_flags				*ft_get_flags(char *format);
 t_bool				ft_has_flags(t_flags *flags);
 t_bool				ft_is_flag(char c);
+t_flags				*ft_check_flags(t_options *options, char *format);
+wchar_t				*ft_apply_flags(t_options *options, wchar_t *arg);
 
 t_bool				ft_skip(char *format);
 t_bool				ft_is_modifier(char c);
@@ -127,6 +130,8 @@ char				*ft_apply_precision(t_options *options, char *arg);
 char				*ft_get_signed_args(t_options *options, va_list ap);
 char				*ft_get_unsigned_args(t_options *options, va_list ap);
 wchar_t				*ft_get_ptr_arg(t_options *options, va_list ap);
+
+size_t				ft_proceed_char(t_options *options, char *arg);
 
 //DEBUG
 void				ft_print_options(t_options *options, char *format);

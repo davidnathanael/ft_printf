@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/14 16:02:32 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/19 10:29:37 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -61,7 +61,9 @@ ft_itoa.c\
 ft_itoa_long_long.c\
 ft_itoa_base.c\
 ft_putchar.c\
+ft_putwchar.c\
 ft_putstr.c\
+ft_putwstr.c\
 ft_putendl.c\
 ft_putnbr.c\
 ft_putchar_fd.c\

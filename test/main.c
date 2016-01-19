@@ -6,15 +6,15 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:03:45 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 23:45:47 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 08:56:32 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <limits.h>
 
 int main()
 {
-	printf(" %o\n", 7);
-	printf(" %o", 8);
+	printf("|%020d|\n", (int)123456);
 	return (0);
 }

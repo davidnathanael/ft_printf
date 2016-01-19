@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 15:48:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 09:46:51 by ddela-cr         ###   ########.fr       */
+/*   Created: 2015/11/26 16:02:13 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/18 11:47:08 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "libft.h"
+#include <limits.h>
 
-size_t		ft_putstr(char const *s)
+void	ft_putnbr_long(long long n)
 {
-	int		nbr;
-
-	if (s)
+	if (n == LONG_MIN)
 	{
-		nbr = ft_strlen(s);
-		write(1, s, nbr);
-		return (nbr);
+		ft_putstr("-9223372036854775808");
+		return ;
 	}
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n = n * -1;
+	}
+	if (n < 10)
+		ft_putchar('0' + n);
 	else
-		return (ft_putstr("(null)"));
+	{
+		ft_putnbr(n / 10);
+		ft_putchar('0' + n % 10);
+	}
 }
