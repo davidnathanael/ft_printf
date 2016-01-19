@@ -21,6 +21,8 @@ ft_memmove.c\
 ft_memchr.c\
 ft_memcmp.c\
 ft_strlen.c\
+ft_wstrlen.c\
+ft_wcharlen.c\
 ft_strdup.c\
 ft_strcpy.c\
 ft_strncpy.c\

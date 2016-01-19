@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   ft_charwlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/19 11:43:21 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 18:56:41 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/19 18:40:53 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/19 18:41:08 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <unistd.h>
-
-int		ft_putwchar(wint_t x)
+int		ft_charwlen(wint_t x)
 {
-	size_t	j;
-	char	c[4];
-	wint_t	tmp;
+	size_t			j;
 
 	j = 1;
 	if (x <= 0x7F)
-		return (write(1, &x, 1));
+		return (j);
 	if (x > 0x1FFFFF)
 		return (-1);
 	while (1)
 	{
-		tmp = 63u & x;
 		if (!(x >>= 6))
 			break ;
-		c[4 - j++] = 128u | tmp;
+		j++;
 	}
-	c[4 - j] = (-128 >> (j - 1)) | tmp;
-	return (write(1, &(c[4 - j]), j));
+	return (j);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 15:06:18 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 18:34:46 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int				ft_get_args(t_options *options, va_list ap)
 	if (options->width > 0)
 		arg = (wchar_t *)ft_apply_width(options, (char *)arg);
 	arg = ft_apply_flags(options, arg);
-//	if (options->type == T_WCHAR_T || options->type == T_WCHAR_T_PTR)
-//		ret = ft_putwstr(arg);
+	if (options->type == T_WCHAR_T || options->type == T_WCHAR_T_PTR)
+		ret = ft_putwstr(arg);
 	if (options->type == T_CHAR)
 		ret = ft_proceed_char(options, (char *)arg);
 	else
