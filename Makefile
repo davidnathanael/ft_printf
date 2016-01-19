@@ -30,8 +30,6 @@ LIBFT_LIB	=	libft/libft.a
 
 SRCBASE		=	\
 				apply_flags.c												\
-				char.c														\
-				conversions.c												\
 				debug.c														\
 				flags.c														\
 				format.c													\
@@ -42,6 +40,10 @@ SRCBASE		=	\
 				precision.c													\
 				printf.c													\
 				proceed.c													\
+				proceed_int.c												\
+				proceed_long.c												\
+				proceed_ptr.c												\
+				proceed_str.c												\
 				width.c
 
 INCBASE		=	\

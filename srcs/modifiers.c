@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/15 12:34:42 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 00:11:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,15 +106,18 @@ t_type		ft_apply_l_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT)
+	if (specifier == INT || specifier == I_INT || specifier == LONG)
 		type = T_LONG;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
-		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+	if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
+			|| specifier == UNS_INT || specifier == UNS_LONG
+			|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_LONG;
 	if (specifier == CHAR)
 		type = T_WINT_T;
 	if (specifier == STR)
 		type = T_WCHAR_T_PTR;
+	if (specifier == PTR)
+		type = T_VOID_PTR;
 	return (type);
 }
 
@@ -123,9 +126,11 @@ t_type		ft_apply_ll_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT)
+	if (specifier == INT || specifier == I_INT
+		|| specifier == LONG)
 		type = T_LONG_LONG;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
+	if (specifier == UNS_OCTAL || specifier == UNS_INT 
+		|| specifier == UNS_LONG_OCTAL || specifier == UNS_LONG
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_LONG_LONG;
 	return (type);
@@ -136,9 +141,10 @@ t_type		ft_apply_h_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT)
+	if (specifier == INT || specifier == I_INT || specifier == LONG)
 		type = T_SHORT;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
+	if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
+		|| specifier == UNS_INT || specifier == UNS_LONG
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_SHORT;
 	return (type);
@@ -151,9 +157,12 @@ t_type		ft_apply_hh_modifier(t_specifier specifier)
 	type = NO_TYPE;
 	if (specifier == INT || specifier == I_INT)
 		type = T_CHAR;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
+	if (specifier == UNS_OCTAL || specifier == UNS_INT 
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_CHAR;
+	if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG
+		|| specifier == LONG)
+		type = T_UNS_SHORT;
 	return (type);
 }
 
@@ -162,11 +171,12 @@ t_type		ft_apply_j_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT)
-		type = T_INTMAX_T;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
+	if (specifier == INT || specifier == I_INT || specifier == LONG)
+		type = T_LONG_LONG;
+	if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
+		|| specifier == UNS_INT || specifier == UNS_LONG
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
-		type = T_UINTMAX_T;
+		type = T_UNS_LONG_LONG;
 	return (type);
 }
 
@@ -175,9 +185,10 @@ t_type		ft_apply_z_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT)
+	if (specifier == INT || specifier == I_INT || specifier == LONG)
 		type = T_SSIZE_T;
-	if (specifier == UNS_OCTAL || specifier == UNS_INT
+	if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
+		|| specifier == UNS_INT || specifier == UNS_LONG
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_SIZE_T;
 	return (type);
