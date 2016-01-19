@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 13:37:41 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 15:06:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,17 @@ int				ft_do_format(char *format, va_list ap)
 	options = ft_get_options(format);
 	if (!options)
 		return (ERROR);
-	if (format[1] == '%')
+	else if (format[1] == '%')
 	{
 		ft_putchar('%');
 		free(options);
 		return (1);
 	}
-	options = ft_apply_modifier(options);
-	printed = ft_get_args(options, ap);
+	else
+	{
+		options = ft_apply_modifier(options);
+		printed = ft_get_args(options, ap);
+	}
 	//ft_print_options(options, ft_strsub(format, 0, ft_skip(format) + 1));
 	free(options);
 	return (printed);

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/18 19:55:46 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/19 16:15:08 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,23 @@ t_bool		ft_skip(char *format)
 	int		i;
 
 	i = 1;
-	while (ft_is_flag(format[i]) || ft_isdigit(format[i])
-									|| ft_is_modifier(format[i]))
+	while ((ft_is_flag(format[i]) || ft_isdigit(format[i])
+			|| ft_is_modifier(format[i])) && format[i])
 		i++;
 	return (i);
+}
+
+static t_bool	ft_is_valid_percent(char *format)
+{
+	if (ft_strchr("sSpdDioOuUxXcC", format[ft_skip(format)]) == NULL)
+	{
+		while (*(++format) == ' ' && *format)
+			;
+		return (FALSE);
+	}
+	if (ft_strcmp(format, "%") == 0)
+		return (FALSE);
+	return (TRUE);
 }
 
 static int		ft_print(char *format, va_list ap)
@@ -35,20 +48,22 @@ static int		ft_print(char *format, va_list ap)
 	i = 0;
 	printed = 0;
 	fmt = format;
-	while (fmt[i])
+	while (*fmt)
 	{
-		if (fmt[i] == '%')
+		if (*fmt == '%')
 		{
-			printed += ft_do_format(&fmt[i], ap);
-			i += ft_skip(&fmt[i]) + 1;
-			continue ;
+			if (ft_is_valid_percent(fmt))
+			{
+				printed += ft_do_format(fmt, ap);
+				fmt += ft_skip(fmt);
+			}
 		}
 		else
 		{
-			ft_putchar(fmt[i]);
+			ft_putchar(*fmt);
 			printed++;
 		}
-		i++;
+		fmt++;
 	}
 	return (printed);
 }

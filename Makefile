@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/19 13:01:35 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/19 15:45:22 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAMEBASE    =   $(shell basename $(NAME))
 
 CC			=	clang -g -O0
 
-FLAGS		=	-Wall -Wextra -Werror
+FLAGS		=	-Wall -Wextra
 
 SRCDIR		=	srcs/
 
