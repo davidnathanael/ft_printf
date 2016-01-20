@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 22:02:10 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 09:12:08 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 15:10:38 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int		ft_proceed_long(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
@@ -31,6 +35,10 @@ int		ft_proceed_long_long(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
@@ -43,6 +51,10 @@ int		ft_proceed_intmax_t(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
@@ -55,6 +67,10 @@ int		ft_proceed_uns_long(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
@@ -67,6 +83,10 @@ int		ft_proceed_uns_long_long(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
@@ -79,6 +99,10 @@ int		ft_proceed_uintmax_t(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->precision >= 0)
+		arg = ft_apply_precision(options, arg);
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
 	if (ft_has_flags(options->flags))
 		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);

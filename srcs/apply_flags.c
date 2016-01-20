@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 11:26:45 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 14:32:10 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,9 @@ wchar_t	*ft_apply_space_flag(t_specifier specifier, char *arg)
 		{
 			if (specifier == INT || specifier == I_INT)
 			{
-				if (arg[0] != ' ')
+				if (arg[0] == '0')
+					arg[0] = ' ';
+				else if (arg[0] != ' ')
 					arg = ft_strjoin(" ", arg);
 			}
 		}
@@ -95,7 +97,7 @@ wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
 			i++;
 		}
 	}
-	else if (ft_atoi(arg))
+	else
 	{
 		if (arg[0] == '0')
 			arg[0] = '+';

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 21:31:36 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 16:18:16 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,16 +75,16 @@ char	*ft_apply_precision(t_options *options, char *arg)
 
 	ret = NULL;
 	len = ft_strlen(arg);
-	if ((NO_TYPE < options->type && options->type < T_CHAR)
-	|| (T_CHAR < options->type && options->type < T_WCHAR_T))
+	if ((int)len < options->precision)
 	{
-		if (options->precision == 0 && ft_atoi(arg) == 0)
-			ret = ft_strdup("");
-		else if (len < (size_t)options->precision)
+		if (len < (size_t)options->precision)
 			ret = ft_prepend_zero(options->precision, arg);
-		else if (options->type == T_CHAR_PTR)
-			if (ft_strlen((char *)arg) > (size_t)options->precision)
-				ret = ft_strsub(arg, 0, (size_t)options->precision);
+		return (ret);
 	}
-	return (ret);
+	else if (options->precision == 0)
+	{
+		if (ft_atoi(arg) == 0)
+			return (ft_strdup(""));
+	}
+	return (arg);
 }

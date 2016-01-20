@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:47:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 09:09:42 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 15:03:30 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_flags		*ft_check_flags(t_options *options, char *format)
 
 	subformat = ft_strsub(format, 0, ft_skip(format) + 1);
 	i = 0;
-	while (ft_strchr(" +-#.0%", subformat[i]) && subformat[i])
+	while (ft_strchr(" +-#0%", subformat[i]) && subformat[i])
 	{
 		if (subformat[i] == '0')
 			options->flags->zero = TRUE;
