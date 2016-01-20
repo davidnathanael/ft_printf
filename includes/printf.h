@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 00:28:53 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 09:36:42 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ typedef enum e_type
 	T_WCHAR_T_PTR,
 	T_CHAR_PTR,
 	T_VOID_PTR,
+	T_NOT_VALID_TYPE,
 }			t_type;
 
 typedef enum		e_modifier
@@ -150,6 +151,7 @@ int					ft_proceed_uns_long_long(t_options *options, char *arg);
 int					ft_proceed_uintmax_t(t_options *options, char *arg);
 int					ft_proceed_size_t(t_options *options, char *arg);
 int					ft_proceed_ssize_t(t_options *options, char *arg);
+int					ft_proceed_not_valid_type(t_options *options, char *arg);
 
 //DEBUG
 void				ft_print_options(t_options *options, char *format);

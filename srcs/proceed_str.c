@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 00:29:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 11:00:44 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,10 @@ int		ft_proceed_str(t_options *options, char *arg)
 	(void)options;
 
 	ret = 0;
+	if (options->width > 0)
+		arg = ft_apply_width(options, arg);
+	if (ft_has_flags(options->flags))
+		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
 	ret = ft_putstr(arg);
 	return (ret);
 }

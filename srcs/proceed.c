@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:04:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 00:05:08 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 11:05:45 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int		ft_proceed_ptr_args(t_options *options, wchar_t *arg)
 		ret = ft_proceed_str(options, (char *)arg);
 	else if (options->type == T_VOID_PTR)
 		ret = ft_proceed_ptr(options, (char *)arg);
+	else if (options->type == T_NOT_VALID_TYPE)
+		ret = ft_proceed_not_valid_type(options, (char *)arg);
 	return (ret);
 }
 
@@ -93,7 +95,7 @@ int		ft_proceed(t_options *options, wchar_t *arg)
 		ret = ft_proceed_unsigned_args(options, arg);
 	else if (T_WINT_T <= type && type <= T_WCHAR_T_PTR)
 		ret = ft_proceed_wide_args(options, arg);
-	else if (T_CHAR_PTR <= type && type <= T_VOID_PTR)
+	else if (T_CHAR_PTR <= type && type <= T_NOT_VALID_TYPE)
 		ret = ft_proceed_ptr_args(options, arg);
 	return (ret);
 }

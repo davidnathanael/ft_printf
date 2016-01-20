@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 00:27:04 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 10:39:42 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,18 @@ char	*ft_apply_width(t_options *options, char *arg)
 	len = ft_strlen(arg);
 	ret = NULL;
 	spaces = NULL;
-	if (width)
+	if (width > (int)len)
 	{
 		spaces = ft_get_spaces(width - len);
-		if (options->flags->minus)
+		if (options->flags->minus 
+			|| (options->type == T_VOID_PTR && options->flags->zero))
 			ret = ft_strjoin(arg, spaces);
 		else
-		{
 			ret = ft_strjoin(spaces, arg);
-		}
 		if (!ret)
 			return (NULL);
 	}
+	else
+		return (arg);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:47:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 13:37:23 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 09:09:42 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,13 @@ t_flags		*ft_get_flags(char *format)
 	{
 		if (*fmt == F_SHARP)
 			flags->sharp = TRUE;
-		if (*fmt == F_ZERO) /* NEEDS IMPROVEMENT */
-			flags->zero = TRUE;
 		if (*fmt == F_MINUS)
 			flags->minus = TRUE;
 		if (*fmt == F_PLUS)
 			flags->plus = TRUE;
 		if (*fmt == F_SPACE)
 			flags->space = TRUE;
+		/* ZERO flag is handled in ft_check_flags */
 		fmt++;
 	}
 	return (flags);
@@ -90,14 +89,15 @@ t_bool		ft_is_flag(char c)
 
 t_flags		*ft_check_flags(t_options *options, char *format)
 {
-	unsigned int		i;
+	char			*subformat;
+	unsigned int	i;
 
+	subformat = ft_strsub(format, 0, ft_skip(format) + 1);
 	i = 0;
-	while (format[i])
+	while (ft_strchr(" +-#.0%", subformat[i]) && subformat[i])
 	{
-		if (ft_isdigit(format[i]))
-			if (format[i] != '0' && format[i + 1] == '0')
-				options->flags->zero = FALSE;
+		if (subformat[i] == '0')
+			options->flags->zero = TRUE;
 		i++;
 	}
 	if (options->precision > 0)

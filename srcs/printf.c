@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 21:59:39 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 09:27:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,6 @@ t_bool		ft_skip(char *format)
 
 static t_bool	ft_is_valid_percent(char *format)
 {
-	if (ft_strchr("sSpdDioOuUxXcC", format[ft_skip(format)]) == NULL)
-	{
-		while (*(++format) == ' ' && *format)
-			;
-		return (FALSE);
-	}
 	if (ft_strcmp(format, "%") == 0)
 		return (FALSE);
 	return (TRUE);

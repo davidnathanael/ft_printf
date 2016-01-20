@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 00:11:05 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 09:41:16 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,22 +58,24 @@ t_type		ft_set_type(t_specifier specifier)
 {
 	if (specifier == STR)
 		return (T_CHAR_PTR);
-	if (specifier == WSTR)
+	else if (specifier == WSTR)
 		return (T_WCHAR_T_PTR);
-	if (specifier == PTR)
+	else if (specifier == PTR)
 		return (T_VOID_PTR);
-	if (specifier == INT || specifier == I_INT)
+	else if (specifier == INT || specifier == I_INT)
 		return (T_INT);
-	if (specifier == LONG)
+	else if (specifier == LONG)
 		return (T_LONG);
-	if (ft_strchr("ouxX", specifier))
+	else if (ft_strchr("ouxX", specifier))
 		return (T_UNS_INT);
-	if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG)
+	else if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG)
 		return (T_UNS_LONG);
-	if (specifier == CHAR)
+	else if (specifier == CHAR)
 		return (T_CHAR);
-	if (specifier == WCHAR)
+	else if (specifier == WCHAR)
 		return (T_WCHAR_T);
+	else
+		return (T_NOT_VALID_TYPE);
 	return (ERROR);
 }
 
@@ -141,10 +143,10 @@ t_type		ft_apply_h_modifier(t_specifier specifier)
 	t_type		type;
 
 	type = NO_TYPE;
-	if (specifier == INT || specifier == I_INT || specifier == LONG)
+	if (specifier == INT || specifier == I_INT)
 		type = T_SHORT;
 	if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
-		|| specifier == UNS_INT || specifier == UNS_LONG
+		|| specifier == UNS_INT || specifier == UNS_LONG || specifier == LONG
 		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_SHORT;
 	return (type);

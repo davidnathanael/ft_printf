@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:11:59 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/19 21:31:38 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/20 11:00:28 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ static wchar_t	*ft_get_void_ptr(va_list ap)
 	return ((wchar_t *)ret);
 }
 
+wchar_t		*ft_set_unvalid_type(t_options *options)
+{
+	char	*str;
+
+	str = ft_strnew(1);
+	str[0] = options->specifier;
+	return ((wchar_t *)str);
+}
+
 wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 {
 	wchar_t		*arg;
@@ -41,6 +50,8 @@ wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 		arg = (wchar_t *)ft_strdup(va_arg(ap, char *));
 	else if (type == T_VOID_PTR)
 		arg = ft_get_void_ptr(ap);
+	else if (type == T_NOT_VALID_TYPE)
+		arg = ft_set_unvalid_type(options);
 	return (arg);
 }
 
