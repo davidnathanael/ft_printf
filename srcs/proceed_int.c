@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 19:16:25 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/21 23:41:51 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 08:28:15 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,3 @@ int		ft_proceed_ssize_t(t_options *options, char *arg)
 	ret = ft_putstr(arg);
 	return (ret);
 }
-

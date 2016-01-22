@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 00:18:05 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 08:41:45 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,13 @@ char				*ft_get_zero(int len);
 char				*ft_get_signed_args(t_options *options, va_list ap);
 char				*ft_get_unsigned_args(t_options *options, va_list ap);
 wchar_t				*ft_get_ptr_arg(t_options *options, va_list ap);
+wchar_t				*ft_get_wint_arg(t_options *options, va_list ap);
 
 int					ft_proceed(t_options *options, wchar_t *arg);
 int					ft_proceed_int(t_options *options, char *arg);
 int					ft_proceed_char(t_options *options, char *arg);
 int					ft_proceed_signed_char(t_options *options, char *arg);
 int					ft_proceed_short(t_options *options, char *arg);
-int					ft_proceed_str(t_options *options, char *arg);
-int					ft_proceed_ptr(t_options *options, char *arg);
 int					ft_proceed_long(t_options *options, char *arg);
 int					ft_proceed_long_long(t_options *options, char *arg);
 int					ft_proceed_intmax_t(t_options *options, char *arg);
@@ -155,6 +154,10 @@ int					ft_proceed_uns_long_long(t_options *options, char *arg);
 int					ft_proceed_uintmax_t(t_options *options, char *arg);
 int					ft_proceed_size_t(t_options *options, char *arg);
 int					ft_proceed_ssize_t(t_options *options, char *arg);
+int					ft_proceed_str(t_options *options, char *arg);
+int					ft_proceed_wchar(t_options *options, wchar_t *arg);
+int					ft_proceed_wstr(t_options *options, wchar_t *arg);
+int					ft_proceed_ptr(t_options *options, char *arg);
 int					ft_proceed_not_valid_type(t_options *options, char *arg);
 
 //DEBUG

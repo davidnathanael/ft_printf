@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 09:41:16 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 09:32:56 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_options	*ft_apply_modifier(t_options *options)
 
 	specifier = options->specifier;
 	modifier = options->modifier;
-	if (modifier == NO_MODIFIER)
+	if (modifier == NO_MODIFIER || specifier == WCHAR || specifier == WSTR)
 		options->type = ft_set_type(specifier);
 	else if (modifier == M_L)
 		options->type = ft_apply_l_modifier(specifier);
@@ -115,7 +115,7 @@ t_type		ft_apply_l_modifier(t_specifier specifier)
 			|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 		type = T_UNS_LONG;
 	if (specifier == CHAR)
-		type = T_WINT_T;
+		type = T_WCHAR_T;
 	if (specifier == STR)
 		type = T_WCHAR_T_PTR;
 	if (specifier == PTR)

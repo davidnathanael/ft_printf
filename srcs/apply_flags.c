@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 00:11:10 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 12:26:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,34 @@ wchar_t	*ft_apply_zero_flag(t_width width, char *arg)
 	return ((wchar_t *)arg);
 }
 
+wchar_t	*ft_apply_zero_flag_wstr(t_width width, wchar_t *arg)
+{
+	unsigned int	i;
+	unsigned int	len;
+
+	i = 0;
+	len = 0;
+	while (arg[i])
+		len = (arg[i++] == ' ') ? len + 1 : len;
+	len = (unsigned int)ft_wstrlen(arg) - len;
+	i = 0;
+	if ((int)len < (int)width)
+	{
+		while (arg[i])
+		{
+			if (arg[i] == L' ')
+				arg[i] = L'0';
+			else if (arg[i] && arg[i] == '-' && ft_isdigit(arg[i + 1]))
+			{
+				arg[i] = L'0';
+				arg[0] = L'-';
+			}
+			i++;
+		}
+	}
+	return (arg);
+}
+
 wchar_t	*ft_apply_space_flag(t_specifier specifier, char *arg)
 {
 		if (arg[0] != '-')
@@ -130,7 +158,9 @@ wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 		if (flags->sharp && ft_strchr("oOxX", specifier))
 			arg = ft_apply_sharp_flag(specifier, options->precision,
 									(char *)arg);
-		if (flags->zero)
+		if (flags->zero && options->type == T_WCHAR_T_PTR)
+			arg = ft_apply_zero_flag_wstr(options->width, arg);
+		else if (flags->zero)
 			arg = ft_apply_zero_flag(options->width, (char *)arg);
 		if (flags->space)
 			arg = ft_apply_space_flag(specifier, (char *)arg);

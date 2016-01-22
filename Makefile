@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/19 15:45:22 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/22 07:57:53 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,7 @@ SRCBASE		=	\
 				proceed_long.c												\
 				proceed_ptr.c												\
 				proceed_str.c												\
+				proceed_wide.c												\
 				width.c
 
 INCBASE		=	\

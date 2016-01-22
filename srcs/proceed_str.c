@@ -6,11 +6,12 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 00:56:51 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 13:03:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <locale.h>
 #include "printf.h"
 #include "libft.h"
 
@@ -33,18 +34,20 @@ int		ft_proceed_str(t_options *options, char *arg)
 int		ft_proceed_char(t_options *options, char *arg)
 {
 	int		ret;
+	char	*arg_tmp;
 
 	if (ft_atoi(arg) == 0)
 		return (1);
-	ret = ft_strnew(1);
-	ret [0] = (unsigned char)ft_atoi(arg);
+	arg_tmp = ft_strnew(1);
+	arg_tmp[0] = (unsigned char)ft_atoi(arg);
 	if (options->precision >= 0)
-		ret = ft_apply_precision_str(options, ret);
+		arg_tmp = ft_apply_precision_str(options, arg_tmp);
 	if (options->width > 0)
-		ret = ft_apply_width(options, ret);
+		arg_tmp = ft_apply_width(options, arg_tmp);
 	if (ft_has_flags(options->flags))
-		ret = (char *)ft_apply_flags(options, (wchar_t *)ret);
-	return (ft_putstr(ret));
+		arg_tmp = (char *)ft_apply_flags(options, (wchar_t *)arg_tmp);
+	ret = ft_putstr(arg_tmp);
+	return (ret);
 }
 
 char		*ft_apply_precision_str(t_options *options, char *arg)

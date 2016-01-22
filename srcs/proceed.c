@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:04:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 11:05:45 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 08:30:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,12 @@ int		ft_proceed_unsigned_args(t_options *options, wchar_t *arg)
 int		ft_proceed_wide_args(t_options *options, wchar_t *arg)
 {
 	int			ret;
-	(void)options;
-	(void)arg;
 
 	ret = 0;
+	if (options->type == T_WCHAR_T)
+		ret = ft_proceed_wchar(options, arg);
+	else if (options->type == T_WCHAR_T_PTR)
+		ret = ft_proceed_wstr(options, arg);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/19 10:29:37 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/22 12:15:11 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -58,6 +58,7 @@ ft_strequ.c\
 ft_strnequ.c\
 ft_strsub.c\
 ft_strjoin.c\
+ft_wstrjoin.c\
 ft_strtrim.c\
 ft_strsplit.c\
 ft_itoa.c\
