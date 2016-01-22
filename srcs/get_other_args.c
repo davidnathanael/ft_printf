@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:11:59 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 11:00:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/21 23:20:47 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,6 @@
 #include <inttypes.h>
 #include "printf.h"
 #include "libft.h"
-
-static wchar_t	*ft_get_void_ptr(va_list ap)
-{
-	char		*ret;
-	char		*to_prepend;
-	unsigned long	arg;
-
-	ret = NULL;
-	to_prepend = ft_strdup("0x");
-	arg = va_arg(ap, unsigned long);
-	ret = ft_strjoin(to_prepend, ft_itoa_base(arg, "0123456789abcdef"));
-	return ((wchar_t *)ret);
-}
 
 wchar_t		*ft_set_unvalid_type(t_options *options)
 {
@@ -49,7 +36,7 @@ wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 	else if (type == T_CHAR_PTR)
 		arg = (wchar_t *)ft_strdup(va_arg(ap, char *));
 	else if (type == T_VOID_PTR)
-		arg = ft_get_void_ptr(ap);
+		arg = (wchar_t *)ft_itoa_base(va_arg(ap, unsigned long), "0123456789");
 	else if (type == T_NOT_VALID_TYPE)
 		arg = ft_set_unvalid_type(options);
 	return (arg);

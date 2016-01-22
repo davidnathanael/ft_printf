@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 16:18:59 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 00:18:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,9 @@ char				*ft_apply_width(t_options *options, char *arg);
 int					ft_get_precision(char *format);
 char				*ft_apply_precision(t_options *options, char *arg);
 char				*ft_apply_precision_str(t_options *options, char *arg);
-char				*ft_apply_precision_ptr(t_options *options, char *arg);
+char				*ft_apply_precision_ptr(t_options *options, char *arg,
+											unsigned long atoi);
+char				*ft_get_zero(int len);
 
 char				*ft_get_signed_args(t_options *options, va_list ap);
 char				*ft_get_unsigned_args(t_options *options, va_list ap);

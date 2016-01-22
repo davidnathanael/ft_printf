@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:16:24 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 09:53:31 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 00:28:48 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*ft_get_unsigned_args(t_options *options, va_list ap)
 	if (type == T_SIZE_T)
 		arg = va_arg(ap, size_t);
 	if (type == T_SSIZE_T)
-		arg = va_arg(ap, ssize_t);
+		return (ft_itoa_long_long(va_arg(ap, ssize_t)));
 	ret = ft_check_o_x(options, arg);
 	return (ret);
 }

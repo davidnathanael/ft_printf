@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 14:32:10 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 00:11:10 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,33 @@
 #include "printf.h"
 #include "libft.h"
 
-wchar_t	*ft_apply_sharp_flag(t_specifier specifier, char *arg)
+wchar_t	*ft_apply_sharp_flag(t_specifier specifier, t_precision precision,
+							char *arg)
 {
 	char	*ret;
-	t_bool	is_null;
 
 	ret = NULL;
-	is_null = FALSE;
-	if (arg[0] == '0' && ft_isdigit(arg[1]) == FALSE)
-		is_null = TRUE;
-	if ((specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL)
-			&& ft_atoi(arg) != 0)
+	if (ft_atoi(arg) == 0)
 	{
-			ret = ft_strjoin("0", (char *)arg);
+		if ((specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+			&& precision == 0)
+			ret = ft_strdup("");
+		else
+			ret = ft_strdup("0");
 	}
-	else if (specifier == UNS_HEXA && !is_null)
-		ret = ft_strjoin("0x", arg);
-	else if (specifier == UNS_HEXA_MAJ && !is_null)
-		ret = ft_strjoin("0X", arg);
+	else if ((specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL)
+				&& arg[0] != '0')
+			ret = ft_strjoin("0", (char *)arg);
+	else if (specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+	{
+		if (specifier == UNS_HEXA)
+			ret = ft_strjoin("0x", arg);
+		else
+			ret = ft_strjoin("0X", arg);
+	}
 	else
-		ret = ft_strdup("0");
+		ret = ft_strdup(arg);
+	free(arg);
 	return ((wchar_t *)ret);
 }
 
@@ -120,8 +127,9 @@ wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 	type = options->type;
 	if (ft_has_flags(flags) && arg)
 	{
-		if (flags->sharp)
-			arg = ft_apply_sharp_flag(specifier, (char *)arg);
+		if (flags->sharp && ft_strchr("oOxX", specifier))
+			arg = ft_apply_sharp_flag(specifier, options->precision,
+									(char *)arg);
 		if (flags->zero)
 			arg = ft_apply_zero_flag(options->width, (char *)arg);
 		if (flags->space)
