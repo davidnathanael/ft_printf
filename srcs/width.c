@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 10:39:42 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:36:59 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ char	*ft_apply_width(t_options *options, char *arg)
 	char	*spaces;
 
 	width = options->width;
-	len = ft_strlen(arg);
+	len = (options->type == T_CHAR) ? 1 : ft_strlen(arg);
 	ret = NULL;
 	spaces = NULL;
 	if (width > (int)len)

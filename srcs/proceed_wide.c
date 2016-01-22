@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 08:07:37 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 12:21:54 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 15:10:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,40 @@ static wchar_t		*ft_get_zero_wstr(int len)
 	return (ret);
 }
 
+wchar_t *ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	size_t	j;
+	wchar_t	*sub;
+
+	i = start;
+	j = 0;
+	if (s == NULL || ((int)start + (int)len) > ft_wstrlen((wchar_t *)s))
+		return (NULL);
+	sub = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
+	if (!sub)
+		return (NULL);
+	while (j < len)
+		sub[j++] = s[i++];
+	sub[j] = '\0';
+	return (sub);
+}
+
+wchar_t	*ft_wstrdup(wchar_t const *s1)
+{
+	int		x;
+	wchar_t	*s2;
+
+	x = 0;
+	while (s1[x])
+		x++;
+	s2 = (wchar_t *)ft_memalloc((sizeof(wchar_t) * (x + 1)));
+	if (!s2)
+		return (0);
+	ft_memcpy(s2, s1, sizeof(wchar_t) * x);
+	return (s2);
+}
+
 wchar_t		*ft_apply_precision_wstr(t_options *options, wchar_t *arg)
 {
 	wchar_t 	*ret;
@@ -62,12 +96,10 @@ wchar_t		*ft_apply_precision_wstr(t_options *options, wchar_t *arg)
 		ret = ft_get_zero_wstr(options->precision);
 	else
 	{
-		ret = ft_memalloc(options->precision + 1);
-		ret[options->precision] = '\0';
-		if (ft_strlen(ft_strtrim((char *)arg)) > (size_t)options->precision)
-			ret = ft_memmove(ret, arg, options->precision);
+		if (ft_wstrlen(arg) > (int)(size_t)options->precision)
+			ret = ft_wstrsub(arg, 0, (size_t)options->precision / sizeof(wchar_t));
 		else
-			ret = ft_memcpy(ret, arg, options->precision);
+			ret = ft_wstrdup(arg);
 	}
 	return (ret);
 }

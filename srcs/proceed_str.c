@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 13:03:18 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 14:49:04 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int		ft_proceed_char(t_options *options, char *arg)
 	int		ret;
 	char	*arg_tmp;
 
-	if (ft_atoi(arg) == 0)
-		return (1);
+	ret = 0;
 	arg_tmp = ft_strnew(1);
 	arg_tmp[0] = (unsigned char)ft_atoi(arg);
 	if (options->precision >= 0)
@@ -46,7 +45,14 @@ int		ft_proceed_char(t_options *options, char *arg)
 		arg_tmp = ft_apply_width(options, arg_tmp);
 	if (ft_has_flags(options->flags))
 		arg_tmp = (char *)ft_apply_flags(options, (wchar_t *)arg_tmp);
-	ret = ft_putstr(arg_tmp);
+	if (ft_atoi(arg) == 0)
+	{
+		ret = ft_putstr(arg_tmp);
+		ft_putchar((unsigned char)ft_atoi(arg));
+		ret++;
+	}
+	else
+		ret = ft_putstr(arg_tmp);
 	return (ret);
 }
 
