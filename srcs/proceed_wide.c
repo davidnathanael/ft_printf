@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 08:07:37 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 15:10:18 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/22 16:26:54 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,26 @@ static wchar_t		*ft_get_zero_wstr(int len)
 	return (ret);
 }
 
-wchar_t *ft_wstrsub(wchar_t const *s, unsigned int start, size_t len)
+wchar_t	*ft_wstrsub(wchar_t *str, unsigned int start, unsigned int len)
 {
-	size_t	i;
-	size_t	j;
-	wchar_t	*sub;
+	size_t			i;
+	wchar_t			*new;
+	unsigned int	this;
 
-	i = start;
-	j = 0;
-	if (s == NULL || ((int)start + (int)len) > ft_wstrlen((wchar_t *)s))
-		return (NULL);
-	sub = (wchar_t *)malloc((len + 1) * sizeof(wchar_t));
-	if (!sub)
-		return (NULL);
-	while (j < len)
-		sub[j++] = s[i++];
-	sub[j] = '\0';
-	return (sub);
+	this = 0;
+	new = ft_memalloc(sizeof(wchar_t) * (len + 1));
+	if (new)
+	{
+		i = 0;
+		while (this + ft_wcharlen(str[i + start]) <= len)
+		{
+			new[i] = str[i + start];
+			this += ft_wcharlen(new[i]);
+			i++;
+		}
+		new[i] = '\0';
+	}
+	return (new);
 }
 
 wchar_t	*ft_wstrdup(wchar_t const *s1)
@@ -96,8 +99,8 @@ wchar_t		*ft_apply_precision_wstr(t_options *options, wchar_t *arg)
 		ret = ft_get_zero_wstr(options->precision);
 	else
 	{
-		if (ft_wstrlen(arg) > (int)(size_t)options->precision)
-			ret = ft_wstrsub(arg, 0, (size_t)options->precision / sizeof(wchar_t));
+		if (ft_wstrlen(arg) > options->precision)
+			ret = ft_wstrsub(arg, 0, options->precision);
 		else
 			ret = ft_wstrdup(arg);
 	}
