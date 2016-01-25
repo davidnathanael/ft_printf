@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:30:38 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:50:30 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ int				ft_get_args(t_options *options, va_list ap)
 	size_t			ret;
 
 	arg = NULL;
+	ret = 0;
 	if (NO_TYPE < options->type && options->type < T_UNS_INT)
 		arg = (wchar_t *)ft_get_signed_args(options, ap);
 	else if (T_INTMAX_T < options->type && options->type <= T_SSIZE_T)
 		arg = (wchar_t *)ft_get_unsigned_args(options, ap);
 	else if (options->type == T_WCHAR_T)
 		arg = ft_get_wint_arg(options, ap);
-	else if (T_WCHAR_T_PTR <= options->type && options->type <= T_NOT_VALID_TYPE)
+	else if (T_WCHAR_T_PTR <= options->type
+				&& options->type <= T_NOT_VALID_TYPE)
 		arg = ft_get_ptr_arg(options, ap);
 	ret = ft_proceed(options, arg);
 	return (ret);
@@ -63,7 +65,6 @@ t_options		*ft_get_options(char *format)
 
 int				ft_do_format(char *format, va_list ap)
 {
-	(void)		ap;
 	int			printed;
 	t_options	*options;
 

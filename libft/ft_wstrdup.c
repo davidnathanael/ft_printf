@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_wstrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/20 08:34:16 by ddela-cr         ###   ########.fr       */
+/*   Created: 2016/01/25 10:02:42 by ddela-cr          #+#    #+#             */
+/*   Updated: 2016/01/25 10:04:38 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <printf.h>
-#include <stdio.h>
-#include <libft.h>
-#include <stdint.h>
-#include <limits.h>
+#include "libft.h"
 
-int	main()
+wchar_t	*ft_wstrdup(wchar_t const *s1)
 {
-	ft_putstr("-------FT_PRINTF TESTS---------\n\n");
-	int ret1 = printf("{%3c}", 0);
-	ft_putstr("\nret1 : ");
-	ft_putnbr(ret1);
+	int		x;
+	wchar_t	*s2;
 
-	return (0);
+	x = 0;
+	while (s1[x])
+		x++;
+	s2 = (wchar_t *)ft_memalloc((sizeof(wchar_t) * (x + 1)));
+	if (!s2)
+		return (0);
+	ft_memcpy(s2, s1, sizeof(wchar_t) * x);
+	return (s2);
 }

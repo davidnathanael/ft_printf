@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:27:49 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:49:40 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:59:28 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 
 int		ft_proceed_ptr(t_options *options, char *arg)
 {
-	int 			ret;
+	int				ret;
 	unsigned long	atoi;
-	(void)options;
 
 	ret = 0;
 	atoi = ft_atoi_uns_long(arg);
@@ -36,8 +35,7 @@ int		ft_proceed_ptr(t_options *options, char *arg)
 
 int		ft_proceed_not_valid_type(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int	ret;
 
 	ret = 0;
 	if (options->width > 0)
@@ -60,14 +58,14 @@ char	*ft_get_zero(int len)
 	return (ret);
 }
 
-char		*ft_apply_precision_ptr(t_options *options, char *arg,
+char	*ft_apply_precision_ptr(t_options *options, char *arg,
 									unsigned long atoi)
 {
-	char 	*ret;
+	char	*ret;
 	char	*zero;
 
 	ret = NULL;
-	zero = NULL;;
+	zero = NULL;
 	if (atoi == 0)
 	{
 		if (options->precision == 0)
@@ -79,12 +77,11 @@ char		*ft_apply_precision_ptr(t_options *options, char *arg,
 	{
 		arg = ft_itoa_base(atoi, "0123456789abcdef");
 		if ((int)ft_strlen(arg) < options->precision)
-			ret = ft_strjoin(zero = ft_get_zero(options->precision - \
+			ret = ft_strjoin(ft_get_zero(options->precision - \
 								ft_strlen(arg)), arg);
 		else
 			ret = ft_strdup(arg);
 	}
-	free(zero);
 	free(arg);
 	return (ft_strjoin("0x", ret));
 }

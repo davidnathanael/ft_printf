@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/21 23:20:49 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:06:49 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "printf.h"
 #include "libft.h"
 
-int		ft_get_precision(char *format)
+int				ft_get_precision(char *format)
 {
 	int		i;
 	int		ret;
@@ -41,7 +41,7 @@ int		ft_get_precision(char *format)
 	return (ret);
 }
 
-static char	*ft_prepend_zero(t_precision precision, char *arg)
+static char		*ft_prepend_zero(t_precision precision, char *arg)
 {
 	char	*ret;
 	char	*arg_tmp;
@@ -68,7 +68,7 @@ static char	*ft_prepend_zero(t_precision precision, char *arg)
 	return (ret);
 }
 
-char	*ft_apply_precision(t_options *options, char *arg)
+char			*ft_apply_precision(t_options *options, char *arg)
 {
 	char	*ret;
 	size_t	len;
@@ -87,4 +87,33 @@ char	*ft_apply_precision(t_options *options, char *arg)
 			return (ft_strdup(""));
 	}
 	return (arg);
+}
+
+static wchar_t		*ft_get_zero_wstr(int len)
+{
+	wchar_t	*ret;
+
+	ret = ft_memalloc(len * sizeof(wchar_t) + 1);
+	if (!ret)
+		return (NULL);
+	while (len)
+		ret[--len] = '0';
+	return (ret);
+}
+
+wchar_t		*ft_apply_precision_wstr(t_options *options, wchar_t *arg)
+{
+	wchar_t	*ret;
+
+	ret = NULL;
+	if (!arg)
+		ret = ft_get_zero_wstr(options->precision);
+	else
+	{
+		if (ft_wstrlen(arg) > options->precision)
+			ret = ft_wstrsub(arg, 0, options->precision);
+		else
+			ret = ft_wstrdup(arg);
+	}
+	return (ret);
 }

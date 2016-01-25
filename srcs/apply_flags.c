@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:28:26 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:49:40 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ wchar_t	*ft_apply_sharp_flag(t_specifier specifier, t_precision precision,
 	}
 	else if ((specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL)
 				&& arg[0] != '0')
-			ret = ft_strjoin("0", (char *)arg);
+		ret = ft_strjoin("0", (char *)arg);
 	else if (specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 	{
 		if (specifier == UNS_HEXA)
@@ -102,25 +102,25 @@ wchar_t	*ft_apply_zero_flag_wstr(t_width width, wchar_t *arg)
 
 wchar_t	*ft_apply_space_flag(t_specifier specifier, char *arg)
 {
-		if (arg[0] != '-')
+	if (arg[0] != '-')
+	{
+		if (specifier == INT || specifier == I_INT)
 		{
-			if (specifier == INT || specifier == I_INT)
-			{
-				if (arg[0] == '0')
-					arg[0] = ' ';
-				else if (arg[0] != ' ')
-					arg = ft_strjoin(" ", arg);
-			}
+			if (arg[0] == '0')
+				arg[0] = ' ';
+			else if (arg[0] != ' ')
+				arg = ft_strjoin(" ", arg);
 		}
+	}
 	return ((wchar_t *)arg);
 }
 
 wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
 {
 	unsigned int	i;
-	(void)options;
 
 	i = 0;
+	(void)options;
 	if ((!ft_isdigit(arg[0])) && arg[0])
 	{
 		while (arg[i])
@@ -164,7 +164,7 @@ wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 			arg = ft_apply_zero_flag(options->width, (char *)arg);
 		if (flags->space)
 			arg = ft_apply_space_flag(specifier, (char *)arg);
-		if (flags->plus 
+		if (flags->plus
 			&& ((T_INT <= type && type <= T_SHORT) || type == T_INTMAX_T))
 			arg = ft_apply_plus_flag(options, (char *)arg);
 	}

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 22:02:10 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 07:50:47 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:21:11 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 int		ft_proceed_long(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -31,8 +30,7 @@ int		ft_proceed_long(t_options *options, char *arg)
 
 int		ft_proceed_long_long(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -47,8 +45,7 @@ int		ft_proceed_long_long(t_options *options, char *arg)
 
 int		ft_proceed_intmax_t(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -63,8 +60,7 @@ int		ft_proceed_intmax_t(t_options *options, char *arg)
 
 int		ft_proceed_uns_long(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -79,8 +75,7 @@ int		ft_proceed_uns_long(t_options *options, char *arg)
 
 int		ft_proceed_uns_long_long(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -95,8 +90,7 @@ int		ft_proceed_uns_long_long(t_options *options, char *arg)
 
 int		ft_proceed_uintmax_t(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)

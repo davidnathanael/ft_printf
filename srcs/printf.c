@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 09:35:51 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:54:23 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdio.h>
 #include <libft.h>
 
-t_bool		ft_skip(char *format)
+t_bool			ft_skip(char *format)
 {
 	int		i;
 
@@ -28,6 +28,9 @@ t_bool		ft_skip(char *format)
 
 static t_bool	ft_is_valid_percent(char *format)
 {
+	char	*fmt;
+
+	fmt = format;
 	if (ft_strcmp(format, "%") == 0)
 		return (FALSE);
 	return (TRUE);
@@ -44,31 +47,25 @@ static int		ft_print(char *format, va_list ap)
 	fmt = format;
 	while (*fmt)
 	{
-		if (*fmt == '%')
+		if (*fmt != '%' && *fmt)
+			printed += ft_putchar(*fmt);
+		else if (*fmt == '%' && ft_is_valid_percent(fmt))
 		{
-			if (ft_is_valid_percent(fmt))
+			ret_do_format = ft_do_format(fmt, ap);
+			if (ret_do_format == ERROR)
+				return (ERROR);
+			else
 			{
-				ret_do_format = ft_do_format(fmt, ap);
-				if (ret_do_format == ERROR)
-					return (ERROR);
-				else
-				{
-					printed += ret_do_format;
-					fmt += ft_skip(fmt);
-				}
+				printed += ret_do_format;
+				fmt += ft_skip(fmt);
 			}
-		}
-		else
-		{
-			ft_putchar(*fmt);
-			printed++;
 		}
 		fmt++;
 	}
 	return (printed);
 }
 
-int			ft_printf(const char * restrict format, ...)
+int				ft_printf(const char *restrict format, ...)
 {
 	va_list		ap;
 	int			ret;
@@ -80,7 +77,7 @@ int			ft_printf(const char * restrict format, ...)
 		return ((int)ft_strlen(format));
 	}
 	va_start(ap, format);
-		ret = ft_print((char *)format, ap);
+	ret = ft_print((char *)format, ap);
 	va_end(ap);
 	return (ret);
 }

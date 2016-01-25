@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:47:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:28:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:49:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "printf.h"
 #include "libft.h"
 
-static t_flags		*ft_init_flags()
+static t_flags		*ft_init_flags(void)
 {
 	t_flags		*flags;
 
@@ -30,7 +30,11 @@ static t_flags		*ft_init_flags()
 	return (flags);
 }
 
-t_flags		*ft_get_flags(char *format)
+/*
+** ZERO flag is handled in ft_check_flags
+*/
+
+t_flags				*ft_get_flags(char *format)
 {
 	char		*fmt;
 	t_flags		*flags;
@@ -49,13 +53,12 @@ t_flags		*ft_get_flags(char *format)
 			flags->plus = TRUE;
 		if (*fmt == F_SPACE)
 			flags->space = TRUE;
-		/* ZERO flag is handled in ft_check_flags */
 		fmt++;
 	}
 	return (flags);
 }
 
-t_bool		ft_has_flags(t_flags *flags)
+t_bool				ft_has_flags(t_flags *flags)
 {
 	if (flags->sharp)
 		return (TRUE);
@@ -70,7 +73,7 @@ t_bool		ft_has_flags(t_flags *flags)
 	return (FALSE);
 }
 
-t_bool		ft_is_flag(char c)
+t_bool				ft_is_flag(char c)
 {
 	if (c == ' ')
 		return (TRUE);
@@ -82,12 +85,12 @@ t_bool		ft_is_flag(char c)
 		return (TRUE);
 	if (c == '0')
 		return (TRUE);
-	if (c == '.')	
+	if (c == '.')
 		return (TRUE);
 	return (FALSE);
 }
 
-t_flags		*ft_check_flags(t_options *options, char *format)
+t_flags				*ft_check_flags(t_options *options, char *format)
 {
 	char			*subformat;
 	unsigned int	i;

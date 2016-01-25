@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/22 07:57:53 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/25 10:00:43 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ LIBFT_LIB	=	libft/libft.a
 
 SRCBASE		=	\
 				apply_flags.c												\
+				apply_jz_modifier.c											\
+				apply_lh_modifier.c											\
 				debug.c														\
 				flags.c														\
 				format.c													\

@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/22 12:15:11 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/25 10:04:33 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -24,6 +24,7 @@ ft_strlen.c\
 ft_wstrlen.c\
 ft_wcharlen.c\
 ft_strdup.c\
+ft_wstrdup.c\
 ft_strcpy.c\
 ft_strncpy.c\
 ft_strcat.c\
@@ -57,6 +58,7 @@ ft_strmapi.c\
 ft_strequ.c\
 ft_strnequ.c\
 ft_strsub.c\
+ft_wstrsub.c\
 ft_strjoin.c\
 ft_wstrjoin.c\
 ft_strtrim.c\

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:36:59 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:08:50 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,51 @@ char	*ft_apply_width(t_options *options, char *arg)
 			ret = ft_strjoin(arg, spaces);
 		else
 			ret = ft_strjoin(spaces, arg);
+		if (!ret)
+			return (NULL);
+	}
+	else
+		return (arg);
+	return (ret);
+}
+
+wchar_t		*ft_get_spaces_wstr(t_width width)
+{
+	wchar_t	*spaces;
+	int		i;
+
+	spaces = ft_memalloc(sizeof(wchar_t) * width + 1);
+	i = 0;
+	if (!spaces)
+		return (NULL);
+	while (i < width)
+	{
+		spaces[i] = ' ';
+		i++;
+	}
+	spaces[i] = '\0';
+	return (spaces);
+}
+
+wchar_t		*ft_apply_width_wstr(t_options *options, wchar_t *arg)
+{
+	t_width	width;
+	int		len;
+	wchar_t	*ret;
+	wchar_t	*spaces;
+
+	width = options->width;
+	len = ft_wstrlen(arg);
+	ret = NULL;
+	spaces = NULL;
+	if (width > (int)len)
+	{
+		spaces = ft_get_spaces_wstr(width - len);
+		if (options->flags->minus 
+			|| (options->type == T_VOID_PTR && options->flags->zero))
+			ret = ft_wstrjoin(arg, spaces);
+		else
+			ret = ft_wstrjoin(spaces, arg);
 		if (!ret)
 			return (NULL);
 	}

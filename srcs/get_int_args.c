@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:16:24 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 00:28:48 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:49:35 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ char	*ft_get_signed_args(t_options *options, va_list ap)
 
 char	*ft_check_o_x(t_options *options, unsigned long long arg)
 {
-	char	*ret;
-	t_specifier	specifier;
+	char			*ret;
+	t_specifier		specifier;
 
 	ret = NULL;
 	specifier = options->specifier;

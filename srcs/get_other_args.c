@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:11:59 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 08:42:30 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 09:49:36 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ wchar_t		*ft_set_unvalid_type(t_options *options)
 wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 {
 	wchar_t		*arg;
-	t_type	type;
+	t_type		type;
 
 	arg = NULL;
 	type = options->type;
@@ -45,8 +45,8 @@ wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 wchar_t		*ft_get_wint_arg(t_options *options, va_list ap)
 {
 	wchar_t		*arg;
-	(void)		options;
 
+	(void)options;
 	arg = (wchar_t *)malloc(sizeof(wchar_t) * 2);
 	arg[0] = (wchar_t)va_arg(ap, wint_t);
 	return (arg);

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:49:04 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:00:23 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@
 
 int		ft_proceed_str(t_options *options, char *arg)
 {
-	int 	ret;
-	(void)options;
+	int		ret;
 
 	ret = 0;
 	if (options->precision >= 0)
@@ -56,10 +55,10 @@ int		ft_proceed_char(t_options *options, char *arg)
 	return (ret);
 }
 
-char		*ft_apply_precision_str(t_options *options, char *arg)
+char	*ft_apply_precision_str(t_options *options, char *arg)
 {
-	char 	*ret;
-	char 	*zero;
+	char	*ret;
+	char	*zero;
 
 	ret = NULL;
 	zero = NULL;

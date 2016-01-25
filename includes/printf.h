@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 14:49:35 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:15:00 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,22 @@ t_bool				ft_skip(char *format);
 t_bool				ft_is_modifier(char c);
 int					ft_get_modifier(char *format);
 t_options			*ft_apply_modifier(t_options *options);
+t_type				ft_apply_l_modifier(t_specifier specifier);
+t_type				ft_apply_ll_modifier(t_specifier specifier);
+t_type				ft_apply_h_modifier(t_specifier specifier);
+t_type				ft_apply_hh_modifier(t_specifier specifier);
+t_type				ft_apply_j_modifier(t_specifier specifier);
+t_type				ft_apply_z_modifier(t_specifier specifier);
 
 int					ft_get_width(char *format);
-char				*ft_get_spaces(t_width width);
 char				*ft_apply_width(t_options *options, char *arg);
+wchar_t				*ft_apply_width_wstr(t_options *options, wchar_t *arg);
+char				*ft_get_spaces(t_width width);
 
 int					ft_get_precision(char *format);
 char				*ft_apply_precision(t_options *options, char *arg);
 char				*ft_apply_precision_str(t_options *options, char *arg);
+wchar_t				*ft_apply_precision_wstr(t_options *options, wchar_t *arg);
 char				*ft_apply_precision_ptr(t_options *options, char *arg,
 											unsigned long atoi);
 char				*ft_get_zero(int len);

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 11:28:54 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 12:14:43 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 10:04:35 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ size_t			ft_strlen(const char *s);
 int				ft_wstrlen(wchar_t *str);
 int				ft_wcharlen(wint_t wc);
 char			*ft_strdup(const char *s1);
+wchar_t			*ft_wstrdup(wchar_t const *s1);
 char			*ft_strcpy(char *dst, const char *src);
 char			*ft_strncpy(char *dst, const char *src, size_t n);
 char			*ft_strcat(char *s1, const char *s2);
@@ -70,14 +71,15 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int				ft_strequ(char const *s1, char const *s2);
 int				ft_strnequ(char const *s1, char const *s2, size_t n);
 char			*ft_strsub(char const *s, unsigned int start, size_t len);
+wchar_t			*ft_wstrsub(wchar_t *str, unsigned int start, unsigned int len);
 char			*ft_strjoin(char const *s1, char const *s2);
-wchar_t 		*ft_wstrjoin(wchar_t *s1, wchar_t *s2);
+wchar_t			*ft_wstrjoin(wchar_t *s1, wchar_t *s2);
 char			*ft_strtrim(char const *s);
 char			**ft_strsplit(char const *s, char c);
 char			*ft_itoa(int n);
 char			*ft_itoa_base(unsigned long long n, char *base);
 char			*ft_itoa_long_long(long long n);
-void			ft_putchar(char c);
+int				ft_putchar(char c);
 int				ft_putwchar(wint_t x);
 size_t			ft_putstr(char const *s);
 int				ft_putwstr(wchar_t *str);
