@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 12:42:15 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 16:49:32 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,12 @@
 
 int	main()
 {
-	/*
-	   ft_putstr("-------FT_PRINTF TESTS---------\n\n");
-	   int ret1 = printf("{%30S}", L"我是一只猫。");
-	   ft_putstr("\nret1l : ");
-	   ft_putnbr(ret1);
-	   ft_putstr("\n");
-	   */
 	char	*l = setlocale(LC_ALL, "");
 
 	if (l == NULL)
 		printf("Locale not set\n");
 	else
 		printf("Locale set to %s\n", l);
-	ft_putnbr(ft_printf("%#6o", 2500));
+ft_printf("{%#.5x}", 1);
 	return (0);
 }

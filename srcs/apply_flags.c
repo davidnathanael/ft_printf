@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 12:42:39 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 16:49:20 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@ wchar_t	*ft_apply_sharp_flag_hexa(t_specifier specifier, t_precision precision,
 	char	*ret;
 	int		spaces;
 
-	ret = NULL;
+	ret = arg;
 	spaces = 0;
-	while (arg[spaces] == ' ' && arg[spaces])
+	while ((arg[spaces] == ' ' && arg[spaces]))
 		spaces++;
 	if (ft_atoi(arg) == 0)
 		ret = ((specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 				&& precision == 0) ? ft_strdup("") : ft_strdup("0");
 	else if (spaces >= 2)
 	{
-		arg[spaces - 2] = '0';
-		arg[spaces - 1] = (specifier == UNS_HEXA) ? 'x' : 'X';
-		ret = arg;
+		ret[spaces - 2] = '0';
+		ret[spaces - 1] = (specifier == UNS_HEXA) ? 'x' : 'X';
 	}
 	else if (specifier == UNS_HEXA)
 	{
@@ -142,12 +141,11 @@ wchar_t	*ft_apply_space_flag(t_specifier specifier, char *arg)
 	return ((wchar_t *)arg);
 }
 
-wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
+wchar_t	*ft_apply_plus_flag(char *arg)
 {
 	unsigned int	i;
 
 	i = 0;
-	(void)options;
 	if ((!ft_isdigit(arg[0])) && arg[0])
 	{
 		while (arg[i])
@@ -155,13 +153,16 @@ wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
 			if (arg[i] == '-')
 				break ;
 			if (ft_isdigit(arg[i]))
+			{
 				arg[i - 1] = '+';
+				break ;
+			}
 			i++;
 		}
 	}
 	else
 	{
-		if (arg[0] == '0')
+		if (arg[0] == '0' && arg[1])
 			arg[0] = '+';
 		else
 			arg = ft_strjoin("+", arg);
@@ -182,18 +183,18 @@ wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 	type = options->type;
 	if (ft_has_flags(flags) && arg)
 	{
-		if (flags->sharp && ft_strchr("oOxX", specifier))
-			arg = ft_apply_sharp_flag(specifier, options->precision,
-									(char *)arg);
 		if (flags->zero && options->type == T_WCHAR_T_PTR)
 			arg = ft_apply_zero_flag_wstr(options->width, arg);
 		else if (flags->zero)
 			arg = ft_apply_zero_flag(options->width, (char *)arg);
+		if (flags->sharp && ft_strchr("oOxX", specifier))
+			arg = ft_apply_sharp_flag(specifier, options->precision,
+									(char *)arg);
 		if (flags->space)
 			arg = ft_apply_space_flag(specifier, (char *)arg);
 		if (flags->plus
 			&& ((T_INT <= type && type <= T_SHORT) || type == T_INTMAX_T))
-			arg = ft_apply_plus_flag(options, (char *)arg);
+			arg = ft_apply_plus_flag((char *)arg);
 	}
 	return (arg);
 }

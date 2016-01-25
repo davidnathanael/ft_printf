@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 11:45:28 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 14:46:40 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,19 @@ char		*ft_get_spaces(t_width width)
 
 char		*ft_apply_width(t_options *options, char *arg)
 {
-	t_width	width;
 	size_t	len;
 	char	*ret;
 	char	*spaces;
 
-	width = options->width;
 	len = (options->type == T_CHAR) ? 1 : ft_strlen(arg);
 	ret = NULL;
 	spaces = NULL;
-	if (width > (int)len)
+	if (options->width > (int)len)
 	{
-		spaces = ft_get_spaces(width - len);
+		if (options->flags->sharp && options->flags->minus &&
+		(options->specifier == UNS_OCTAL || options->specifier == UNS_LONG_OCTAL))
+			--options->width;
+		spaces = ft_get_spaces(options->width - len);
 		if (options->flags->minus ||
 			(options->type == T_VOID_PTR && options->flags->zero))
 			ret = ft_strjoin(arg, spaces);
