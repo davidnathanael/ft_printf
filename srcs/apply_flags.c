@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 09:49:40 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 12:42:39 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,57 @@
 #include "printf.h"
 #include "libft.h"
 
+wchar_t	*ft_apply_sharp_flag_hexa(t_specifier specifier, t_precision precision,
+									char *arg)
+{
+	char	*ret;
+	int		spaces;
+
+	ret = NULL;
+	spaces = 0;
+	while (arg[spaces] == ' ' && arg[spaces])
+		spaces++;
+	if (ft_atoi(arg) == 0)
+		ret = ((specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+				&& precision == 0) ? ft_strdup("") : ft_strdup("0");
+	else if (spaces >= 2)
+	{
+		arg[spaces - 2] = '0';
+		arg[spaces - 1] = (specifier == UNS_HEXA) ? 'x' : 'X';
+		ret = arg;
+	}
+	else if (specifier == UNS_HEXA)
+	{
+		ret = ft_strjoin("0x", arg);
+	}
+	else
+		ret = ft_strjoin("0X", arg);
+	return ((wchar_t *)ret);
+}
+
 wchar_t	*ft_apply_sharp_flag(t_specifier specifier, t_precision precision,
 							char *arg)
 {
 	char	*ret;
+	int		spaces;
 
 	ret = NULL;
-	if (ft_atoi(arg) == 0)
-	{
-		if ((specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
-			&& precision == 0)
-			ret = ft_strdup("");
-		else
-			ret = ft_strdup("0");
-	}
-	else if ((specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL)
+	spaces = 0;
+	while (arg[spaces] == ' ' && arg[spaces])
+		spaces++;
+	if ((specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL)
 				&& arg[0] != '0')
-		ret = ft_strjoin("0", (char *)arg);
-	else if (specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
 	{
-		if (specifier == UNS_HEXA)
-			ret = ft_strjoin("0x", arg);
+		if (spaces >= 1)
+		{
+			arg[spaces - 1] = '0';
+			ret = arg;
+		}
 		else
-			ret = ft_strjoin("0X", arg);
+			ret = ft_strjoin("0", (char *)arg);
 	}
+	else if (specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+		ret = (char *)ft_apply_sharp_flag_hexa(specifier, precision, arg);
 	else
 		ret = ft_strdup(arg);
 	free(arg);

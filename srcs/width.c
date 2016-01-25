@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 10:08:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/25 11:45:28 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "printf.h"
 #include "libft.h"
 
-int		ft_get_width(char *format)
+int			ft_get_width(char *format)
 {
 	int		i;
 	int		ret;
@@ -43,7 +43,7 @@ int		ft_get_width(char *format)
 	return (ret);
 }
 
-char	*ft_get_spaces(t_width width)
+char		*ft_get_spaces(t_width width)
 {
 	char	*spaces;
 	int		i;
@@ -60,7 +60,7 @@ char	*ft_get_spaces(t_width width)
 	return (spaces);
 }
 
-char	*ft_apply_width(t_options *options, char *arg)
+char		*ft_apply_width(t_options *options, char *arg)
 {
 	t_width	width;
 	size_t	len;
@@ -74,8 +74,8 @@ char	*ft_apply_width(t_options *options, char *arg)
 	if (width > (int)len)
 	{
 		spaces = ft_get_spaces(width - len);
-		if (options->flags->minus 
-			|| (options->type == T_VOID_PTR && options->flags->zero))
+		if (options->flags->minus ||
+			(options->type == T_VOID_PTR && options->flags->zero))
 			ret = ft_strjoin(arg, spaces);
 		else
 			ret = ft_strjoin(spaces, arg);
@@ -119,8 +119,8 @@ wchar_t		*ft_apply_width_wstr(t_options *options, wchar_t *arg)
 	if (width > (int)len)
 	{
 		spaces = ft_get_spaces_wstr(width - len);
-		if (options->flags->minus 
-			|| (options->type == T_VOID_PTR && options->flags->zero))
+		if (options->flags->minus ||
+			(options->type == T_VOID_PTR && options->flags->zero))
 			ret = ft_wstrjoin(arg, spaces);
 		else
 			ret = ft_wstrjoin(spaces, arg);
