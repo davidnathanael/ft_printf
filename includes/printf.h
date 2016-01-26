@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 16:09:16 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 23:51:56 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,16 @@
 # define F_PLUS				'+'
 # define F_SPACE			' '
 
-#define NB_COLORS			7
+#define NB_COLORS			10
+#define ANSI_BOLD			"\x1b[1m"
+#define ANSI_UNBOLD			"\x1b[22m"
 #define ANSI_COLOR_RED		"\x1b[31m"
 #define ANSI_COLOR_GREEN	"\x1b[32m"
 #define ANSI_COLOR_BLUE		"\x1b[34m"
 #define ANSI_COLOR_YELLOW	"\x1b[33m"
 #define ANSI_COLOR_MAGENTA	"\x1b[35m"
 #define ANSI_COLOR_CYAN		"\x1b[36m"
+#define ANSI_COLOR_DEFAULT	"\x1b[39m"
 #define ANSI_COLOR_RESET	"\x1b[0m"
 
 typedef	int			t_bool;
@@ -151,6 +154,8 @@ wchar_t				*ft_apply_precision_wstr(t_options *options, wchar_t *arg);
 char				*ft_apply_precision_ptr(t_options *options, char *arg,
 											unsigned long atoi);
 char				*ft_get_zero(int len);
+wchar_t				*ft_get_zero_wstr(int len);
+char				*ft_prepend_zero(t_precision precision, char *arg);
 
 char				*ft_get_signed_args(t_options *options, va_list ap);
 char				*ft_get_unsigned_args(t_options *options, va_list ap);
@@ -160,19 +165,6 @@ wchar_t				*ft_get_wint_arg(t_options *options, va_list ap);
 int					ft_proceed(t_options *options, wchar_t *arg);
 int					ft_proceed_int(t_options *options, char *arg);
 int					ft_proceed_char(t_options *options, char *arg);
-int					ft_proceed_signed_char(t_options *options, char *arg);
-int					ft_proceed_short(t_options *options, char *arg);
-int					ft_proceed_long(t_options *options, char *arg);
-int					ft_proceed_long_long(t_options *options, char *arg);
-int					ft_proceed_intmax_t(t_options *options, char *arg);
-int					ft_proceed_uns_int(t_options *options, char *arg);
-int					ft_proceed_uns_char(t_options *options, char *arg);
-int					ft_proceed_uns_short(t_options *options, char *arg);
-int					ft_proceed_uns_long(t_options *options, char *arg);
-int					ft_proceed_uns_long_long(t_options *options, char *arg);
-int					ft_proceed_uintmax_t(t_options *options, char *arg);
-int					ft_proceed_size_t(t_options *options, char *arg);
-int					ft_proceed_ssize_t(t_options *options, char *arg);
 int					ft_proceed_str(t_options *options, char *arg);
 int					ft_proceed_wchar(t_options *options, wchar_t *arg);
 int					ft_proceed_wstr(t_options *options, wchar_t *arg);

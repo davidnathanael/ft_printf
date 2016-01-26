@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 16:07:22 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 23:34:20 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int				ft_get_precision(char *format)
 	return (ret);
 }
 
-static char		*ft_prepend_zero(t_precision precision, char *arg)
+char		*ft_prepend_zero(t_precision precision, char *arg)
 {
 	char	*ret;
 	char	*arg_tmp;
@@ -68,18 +68,15 @@ static char		*ft_prepend_zero(t_precision precision, char *arg)
 	return (ret);
 }
 
-char			*ft_apply_precision(t_options *options, char *arg)
+char	*ft_get_zero(int len)
 {
 	char	*ret;
-	size_t	len;
 
-	ret = ft_strdup(arg);
-	len = (arg[0] == '-') ? ft_strlen(arg) - 1 : ft_strlen(arg);
-	if ((int)len < options->precision)
-		ret = ft_prepend_zero(options->precision, arg);
-	else if (options->precision == 0 && ft_atoi(arg) == 0)
-		ret = ft_strdup("");
-	free(arg);
+	ret = ft_strnew((size_t)len);
+	if (!ret)
+		return (NULL);
+	while (len)
+		ret[--len] = '0';
 	return (ret);
 }
 
@@ -92,22 +89,5 @@ wchar_t			*ft_get_zero_wstr(int len)
 		return (NULL);
 	while (len)
 		ret[--len] = '0';
-	return (ret);
-}
-
-wchar_t			*ft_apply_precision_wstr(t_options *options, wchar_t *arg)
-{
-	wchar_t	*ret;
-
-	ret = NULL;
-	if (!arg)
-		ret = ft_get_zero_wstr(options->precision);
-	else
-	{
-		if (ft_wstrlen(arg) > options->precision)
-			ret = ft_wstrsub(arg, 0, options->precision);
-		else
-			ret = ft_wstrdup(arg);
-	}
 	return (ret);
 }

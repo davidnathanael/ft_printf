@@ -32,6 +32,7 @@ SRCBASE		=	\
 				apply_flags.c												\
 				apply_jz_modifier.c											\
 				apply_lh_modifier.c											\
+				apply_precision.c											\
 				color.c														\
 				flags.c														\
 				format.c													\
@@ -43,7 +44,6 @@ SRCBASE		=	\
 				printf.c													\
 				proceed.c													\
 				proceed_int.c												\
-				proceed_long.c												\
 				proceed_ptr.c												\
 				proceed_str.c												\
 				proceed_wide.c												\
