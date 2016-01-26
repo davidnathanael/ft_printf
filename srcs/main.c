@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 13:10:46 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:02:08 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int	main()
 		printf("Locale not set\n");
 	else
 		printf("Locale set to %s\n", l);
-	ft_printf("{red}test{eoc} %d\n", 42);
+	ft_putnbr(printf("%*d", 5, 42));
 	return (0);
 }

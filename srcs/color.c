@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 11:25:50 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 13:12:39 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 15:53:05 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,14 @@ char	*ft_check_color(char *str)
 	{
 		if (ft_strstr(str, colors[i]))
 		{
-			ft_putnbr(i);
 			color_code = ft_get_color_code(colors[i]);
-			ret = ft_strreplace(str, colors[i], color_code);
-			free(str);
+			ret = ft_strreplace(ret, colors[i], color_code);
 		}
 		i++;
 	}
+	i = 0;
+	while (i <= NB_COLORS)
+		free(colors[i++]);
+	free(colors);
 	return (ret);
 }

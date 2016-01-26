@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 13:10:09 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 15:54:50 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ static t_bool	ft_is_valid_percent(char *format)
 
 int		ft_put(int *printed, char *format)
 {
-	int ret;
-	char *to_print;
+	int		ret;
+	char	*to_print;
 
 	ret = 0;
 	to_print = NULL;
 	while (format[ret] != '%' && format[ret])
 		ret++;
 	to_print = ft_check_color(ft_strsub(format, 0, ret));
-	*printed = ft_putstr(to_print);
+	*printed += ft_putstr(to_print);
 	free(to_print);
 	return (--ret);
 }
@@ -87,11 +87,6 @@ int				ft_printf(const char *restrict format, ...)
 	int			ret;
 
 	ret = 0;
-	if (!ft_strchr((char *)format, '%'))
-	{
-		ft_putstr((char *)format);
-		return ((int)ft_strlen(format));
-	}
 	va_start(ap, format);
 	ret = ft_print((char *)format, ap);
 	va_end(ap);

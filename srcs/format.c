@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 11:05:31 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 15:53:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@ int				ft_get_args(t_options *options, va_list ap)
 {
 	wchar_t			*arg;
 	size_t			ret;
+	t_type			type;
 
 	arg = NULL;
 	ret = 0;
-	if (NO_TYPE < options->type && options->type < T_UNS_INT)
+	type = options->type;
+	if (NO_TYPE < type && type < T_UNS_INT)
 		arg = (wchar_t *)ft_get_signed_args(options, ap);
-	else if (T_INTMAX_T < options->type && options->type <= T_SSIZE_T)
+	else if (T_INTMAX_T < type && type <= T_SSIZE_T)
 		arg = (wchar_t *)ft_get_unsigned_args(options, ap);
-	else if (options->type == T_WCHAR_T)
+	else if (type == T_WCHAR_T)
 		arg = ft_get_wint_arg(options, ap);
-	else if (T_WCHAR_T_PTR <= options->type
-				&& options->type <= T_NOT_VALID_TYPE)
+	else if (T_WCHAR_T_PTR <= type && type <= T_NOT_VALID_TYPE)
 		arg = ft_get_ptr_arg(options, ap);
 	ret = ft_proceed(options, arg);
 	return (ret);
