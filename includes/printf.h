@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 11:12:02 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 12:49:19 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,22 @@
 # define STR				's'
 # define WSTR				'S'
 # define PTR				'p'
+# define BINARY				'b'
 
 # define F_SHARP			'#'
 # define F_ZERO				'0'
 # define F_MINUS			'-'
 # define F_PLUS				'+'
 # define F_SPACE			' '
+
+#define NB_COLORS			7
+#define ANSI_COLOR_RED		"\x1b[31m"
+#define ANSI_COLOR_GREEN	"\x1b[32m"
+#define ANSI_COLOR_BLUE		"\x1b[34m"
+#define ANSI_COLOR_YELLOW	"\x1b[33m"
+#define ANSI_COLOR_MAGENTA	"\x1b[35m"
+#define ANSI_COLOR_CYAN		"\x1b[36m"
+#define ANSI_COLOR_RESET	"\x1b[0m"
 
 typedef	int			t_bool;
 
@@ -110,6 +120,7 @@ typedef struct		s_options
 
 int					ft_printf(const char *restrict format, ...);
 int					ft_do_format(char *format, va_list ap);
+char				*ft_check_color(char *str);
 
 t_flags				*ft_get_flags(char *format);
 t_bool				ft_has_flags(t_flags *flags);

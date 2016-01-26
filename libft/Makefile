@@ -6,7 +6,7 @@
 #    By: ddela-cr <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/27 16:43:54 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/25 10:04:33 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/26 12:06:44 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = libft.a
@@ -34,6 +34,7 @@ ft_strchr.c\
 ft_strnchr.c\
 ft_strrchr.c\
 ft_strstr.c\
+ft_strreplace.c\
 ft_strnstr.c\
 ft_strcmp.c\
 ft_strncmp.c\

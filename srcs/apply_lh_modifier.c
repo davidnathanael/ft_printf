@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:43:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 16:11:14 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 11:00:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ t_type		ft_apply_l_modifier(t_specifier specifier)
 		type = T_LONG;
 	else if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
 			|| specifier == UNS_INT || specifier == UNS_LONG
-			|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+			|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ
+			|| specifier == BINARY)
 		type = T_UNS_LONG;
 	else if (specifier == CHAR)
 		type = T_WCHAR_T;
@@ -44,7 +45,8 @@ t_type		ft_apply_ll_modifier(t_specifier specifier)
 		type = T_LONG_LONG;
 	else if (specifier == UNS_OCTAL || specifier == UNS_INT
 		|| specifier == UNS_LONG_OCTAL || specifier == UNS_LONG
-		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ
+		|| specifier == BINARY)
 		type = T_UNS_LONG_LONG;
 	else
 		type = T_NOT_VALID_TYPE;
@@ -58,9 +60,12 @@ t_type		ft_apply_h_modifier(t_specifier specifier)
 	type = NO_TYPE;
 	if (specifier == INT || specifier == I_INT)
 		type = T_SHORT;
+	else if (specifier == UNS_LONG)
+		type = T_UNS_LONG;
 	else if (specifier == UNS_OCTAL || specifier == UNS_LONG_OCTAL
 		|| specifier == UNS_INT || specifier == UNS_LONG || specifier == LONG
-		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ
+		|| specifier == BINARY)
 		type = T_UNS_SHORT;
 	else
 		type = T_NOT_VALID_TYPE;
@@ -75,7 +80,8 @@ t_type		ft_apply_hh_modifier(t_specifier specifier)
 	if (specifier == INT || specifier == I_INT)
 		type = T_CHAR;
 	else if (specifier == UNS_OCTAL || specifier == UNS_INT
-		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ)
+		|| specifier == UNS_HEXA || specifier == UNS_HEXA_MAJ
+		|| specifier == BINARY)
 		type = T_UNS_CHAR;
 	else if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG
 		|| specifier == LONG)

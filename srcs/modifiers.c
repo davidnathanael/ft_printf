@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 08:14:57 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 11:45:30 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 10:56:09 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_type		ft_set_type(t_specifier specifier)
 		return (T_INT);
 	else if (specifier == LONG)
 		return (T_LONG);
-	else if (ft_strchr("ouxX", specifier))
+	else if (ft_strchr("ouxXb", specifier))
 		return (T_UNS_INT);
 	else if (specifier == UNS_LONG_OCTAL || specifier == UNS_LONG)
 		return (T_UNS_LONG);

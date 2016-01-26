@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:16:24 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/25 11:01:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 11:25:43 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_get_signed_args(t_options *options, va_list ap)
 	return (ret);
 }
 
-char	*ft_check_o_x(t_options *options, unsigned long long arg)
+char	*ft_check_o_x_b(t_options *options, unsigned long long arg)
 {
 	char			*ret;
 	t_specifier		specifier;
@@ -53,6 +53,8 @@ char	*ft_check_o_x(t_options *options, unsigned long long arg)
 		ret = ft_itoa_base((unsigned long long)arg, "0123456789abcdef");
 	else if (specifier == UNS_HEXA_MAJ)
 		ret = ft_itoa_base((unsigned long long)arg, "0123456789ABCDEF");
+	else if (specifier == BINARY)
+		ret = ft_itoa_base((unsigned long long)arg, "01");
 	else
 		ret = ft_itoa_base(arg, "0123456789");
 	return (ret);
@@ -83,6 +85,6 @@ char	*ft_get_unsigned_args(t_options *options, va_list ap)
 		arg = va_arg(ap, size_t);
 	if (type == T_SSIZE_T)
 		return (ft_itoa_long_long(va_arg(ap, ssize_t)));
-	ret = ft_check_o_x(options, arg);
+	ret = ft_check_o_x_b(options, arg);
 	return (ret);
 }
