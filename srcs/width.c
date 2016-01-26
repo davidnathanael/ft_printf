@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 10:51:32 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:07:55 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char		*ft_get_spaces(t_width width)
 	return (spaces);
 }
 
-size_t		ft_get_len4width(t_options *options, char * arg)
+size_t		ft_get_len4width(t_options *options, char *arg)
 {
 	t_width			width;
 	t_specifier		specifier;

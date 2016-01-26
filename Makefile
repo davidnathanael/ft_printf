@@ -6,7 +6,7 @@
 #    By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/29 13:19:00 by ddela-cr          #+#    #+#              #
-#    Updated: 2016/01/26 13:03:17 by ddela-cr         ###   ########.fr        #
+#    Updated: 2016/01/26 16:22:38 by ddela-cr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SRCBASE		=	\
 				apply_jz_modifier.c											\
 				apply_lh_modifier.c											\
 				color.c														\
-				debug.c														\
 				flags.c														\
 				format.c													\
 				get_int_args.c												\

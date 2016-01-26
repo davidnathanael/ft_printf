@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 15:54:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:07:37 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static t_bool	ft_is_valid_percent(char *format)
 	return (TRUE);
 }
 
-int		ft_put(int *printed, char *format)
+int				ft_put(int *printed, char *format)
 {
 	int		ret;
 	char	*to_print;

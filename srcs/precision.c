@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 10:51:26 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:07:22 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ char			*ft_apply_precision(t_options *options, char *arg)
 	return (ret);
 }
 
-static wchar_t		*ft_get_zero_wstr(int len)
+wchar_t			*ft_get_zero_wstr(int len)
 {
 	wchar_t	*ret;
 

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 15:22:52 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/26 16:09:16 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,8 +178,5 @@ int					ft_proceed_wchar(t_options *options, wchar_t *arg);
 int					ft_proceed_wstr(t_options *options, wchar_t *arg);
 int					ft_proceed_ptr(t_options *options, char *arg);
 int					ft_proceed_not_valid_type(t_options *options, char *arg);
-
-//DEBUG
-void				ft_print_options(t_options *options, char *format);
 
 #endif
