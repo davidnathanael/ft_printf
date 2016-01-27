@@ -6,14 +6,14 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 12:08:51 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 12:08:56 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:41:00 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_strreplace(char *str, char *to_replace, char *replace)
+char	*ft_strreplace(char *str, char *to_replace, char *replace)
 {
 	char	*s1;
 	char	*s2;

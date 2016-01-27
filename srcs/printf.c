@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:21:01 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 16:07:37 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 10:52:13 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_bool			ft_skip(char *format)
 
 	i = 1;
 	while ((ft_is_flag(format[i]) || ft_isdigit(format[i])
-			|| ft_is_modifier(format[i])) && format[i])
+			|| ft_is_modifier(format[i]) || format[i] == '*') && format[i])
 		i++;
 	return (i);
 }

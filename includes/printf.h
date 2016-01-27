@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:51:56 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:41:19 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define PRINTF_H
 
 # include <stdarg.h>
-#include <inttypes.h>
-#include <string.h>
+# include <inttypes.h>
+# include <string.h>
 
 # define TRUE				1
 # define FALSE				0
@@ -23,7 +23,7 @@
 # define ERROR				-1
 # define ERR_STRNEW			-2
 
-# define NO_WIDTH			-1
+# define NO_WIDTH			0
 # define NO_PRECISION		-1
 
 # define INT				'd'
@@ -48,17 +48,17 @@
 # define F_PLUS				'+'
 # define F_SPACE			' '
 
-#define NB_COLORS			10
-#define ANSI_BOLD			"\x1b[1m"
-#define ANSI_UNBOLD			"\x1b[22m"
-#define ANSI_COLOR_RED		"\x1b[31m"
-#define ANSI_COLOR_GREEN	"\x1b[32m"
-#define ANSI_COLOR_BLUE		"\x1b[34m"
-#define ANSI_COLOR_YELLOW	"\x1b[33m"
-#define ANSI_COLOR_MAGENTA	"\x1b[35m"
-#define ANSI_COLOR_CYAN		"\x1b[36m"
-#define ANSI_COLOR_DEFAULT	"\x1b[39m"
-#define ANSI_COLOR_RESET	"\x1b[0m"
+# define NB_COLORS			10
+# define ANSI_BOLD			"\x1b[1m"
+# define ANSI_UNBOLD		"\x1b[22m"
+# define ANSI_COLOR_RED		"\x1b[31m"
+# define ANSI_COLOR_GREEN	"\x1b[32m"
+# define ANSI_COLOR_BLUE	"\x1b[34m"
+# define ANSI_COLOR_YELLOW	"\x1b[33m"
+# define ANSI_COLOR_MAGENTA	"\x1b[35m"
+# define ANSI_COLOR_CYAN	"\x1b[36m"
+# define ANSI_COLOR_DEFAULT	"\x1b[39m"
+# define ANSI_COLOR_RESET	"\x1b[0m"
 
 typedef	int			t_bool;
 
@@ -66,7 +66,7 @@ typedef	int			t_width;
 typedef	int			t_precision;
 typedef	int			t_specifier;
 
-typedef enum e_type
+typedef enum		e_type
 {
 	NO_TYPE,
 	T_INT,
@@ -89,7 +89,7 @@ typedef enum e_type
 	T_CHAR_PTR,
 	T_VOID_PTR,
 	T_NOT_VALID_TYPE,
-}			t_type;
+}					t_type;
 
 typedef enum		e_modifier
 {
@@ -130,6 +130,9 @@ t_bool				ft_has_flags(t_flags *flags);
 t_bool				ft_is_flag(char c);
 t_flags				*ft_check_flags(t_options *options, char *format);
 wchar_t				*ft_apply_flags(t_options *options, wchar_t *arg);
+wchar_t				*ft_apply_zero_flag_wstr(t_width width, wchar_t *arg);
+char				*ft_apply_sharp_flag_hexa(t_specifier specifier,
+					t_precision precision, t_flags *flags, char *arg);
 
 t_bool				ft_skip(char *format);
 t_bool				ft_is_modifier(char c);
@@ -142,12 +145,12 @@ t_type				ft_apply_hh_modifier(t_specifier specifier);
 t_type				ft_apply_j_modifier(t_specifier specifier);
 t_type				ft_apply_z_modifier(t_specifier specifier);
 
-int					ft_get_width(char *format);
+int					ft_get_width(char *format, va_list ap);
 char				*ft_apply_width(t_options *options, char *arg);
 wchar_t				*ft_apply_width_wstr(t_options *options, wchar_t *arg);
 char				*ft_get_spaces(t_width width);
 
-int					ft_get_precision(char *format);
+int					ft_get_precision(char *format, va_list ap);
 char				*ft_apply_precision(t_options *options, char *arg);
 char				*ft_apply_precision_str(t_options *options, char *arg);
 wchar_t				*ft_apply_precision_wstr(t_options *options, wchar_t *arg);

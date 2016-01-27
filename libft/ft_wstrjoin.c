@@ -6,14 +6,14 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 12:14:12 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/22 12:16:05 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:40:59 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-wchar_t *ft_wstrjoin(wchar_t *s1, wchar_t *s2)
+wchar_t	*ft_wstrjoin(wchar_t *s1, wchar_t *s2)
 {
 	int		i;
 	int		j;

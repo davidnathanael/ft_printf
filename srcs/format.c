@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 16:07:10 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:41:20 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int				ft_get_args(t_options *options, va_list ap)
 	return (ret);
 }
 
-t_options		*ft_get_options(char *format)
+t_options		*ft_get_options(char *format, va_list ap)
 {
 	t_options	*options;
 	char		*subformat;
@@ -54,12 +54,14 @@ t_options		*ft_get_options(char *format)
 		return (NULL);
 	}
 	options->flags = ft_get_flags(subformat);
-	options->width = ft_get_width(subformat);
-	options->precision = ft_get_precision(subformat);
+	options->width = ft_get_width(subformat, ap);
+	options->precision = ft_get_precision(subformat, ap);
 	options->modifier = ft_get_modifier(subformat);
 	options->specifier = subformat[ft_strlen(subformat) - 1];
 	options->type = 0;
 	options->flags = ft_check_flags(options, format);
+	if (options->width < 0)
+		options->width = -options->width;
 	free(subformat);
 	return (options);
 }
@@ -70,7 +72,7 @@ int				ft_do_format(char *format, va_list ap)
 	t_options	*options;
 
 	printed = 0;
-	options = ft_get_options(format);
+	options = ft_get_options(format, ap);
 	if (!options)
 		return (ERROR);
 	options = ft_apply_modifier(options);

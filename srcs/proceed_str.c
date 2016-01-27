@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:34:23 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:35:09 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ int		ft_proceed_char(t_options *options, char *arg)
 		arg_tmp = (char *)ft_apply_flags(options, (wchar_t *)arg_tmp);
 	if (ft_atoi(arg) == 0)
 	{
+		if (options->flags->minus)
+			ft_putchar((unsigned char)ft_atoi(arg));
 		ret = ft_putstr(arg_tmp);
-		ft_putchar((unsigned char)ft_atoi(arg));
+		if (!options->flags->minus)
+			ft_putchar((unsigned char)ft_atoi(arg));
 		ret++;
 	}
 	else

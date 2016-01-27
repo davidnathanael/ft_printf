@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 10:18:57 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/27 14:23:41 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include "printf.h"
 #include "libft.h"
 
-int				ft_get_precision(char *format)
+int				ft_get_precision(char *format, va_list ap)
 {
 	int		i;
 	int		ret;
@@ -30,13 +30,15 @@ int				ft_get_precision(char *format)
 		return (ERR_STRNEW);
 	if ((fmt = ft_strchr(fmt, '.')))
 	{
-		while (++fmt && *fmt && ft_isdigit(*fmt))
-			tmp[i++] = *fmt;
-		if (i == 0)
-			ret = 0;
+		if (ft_strchr(fmt, '*'))
+			ret = va_arg(ap, int);
+		else
+		{
+			while (++fmt && *fmt && ft_isdigit(*fmt))
+				tmp[i++] = *fmt;
+			ret = (i == 0) ? 0 : ft_atoi(tmp);
+		}
 	}
-	if (i > 0)
-		ret = ft_atoi(tmp);
 	free(tmp);
 	return (ret);
 }
