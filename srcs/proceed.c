@@ -6,11 +6,12 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:04:02 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:34:20 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:14 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
+#include "stdlib.h"
 
 int		ft_proceed_int_args(t_options *options, wchar_t *arg)
 {

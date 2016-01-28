@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:13:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:35:09 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:10 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,42 +18,44 @@
 int		ft_proceed_str(t_options *options, char *arg)
 {
 	int		ret;
+	char	*to_print;
 
 	ret = 0;
+	to_print = ft_strdup(arg);
 	if (options->precision >= 0)
-		arg = ft_apply_precision_str(options, arg);
+		to_print = ft_apply_precision_str(options, to_print);
 	if (options->width > 0)
-		arg = ft_apply_width(options, arg);
-	if (ft_has_flags(options->flags))
-		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
-	ret = ft_putstr(arg);
+		to_print = ft_apply_width(options, to_print);
+	if (ft_has_flags(options->flags) && to_print)
+		to_print = (char *)ft_apply_flags(options, (wchar_t *)to_print);
+	ret = ft_putstr(to_print);
 	return (ret);
 }
 
 int		ft_proceed_char(t_options *options, char *arg)
 {
 	int		ret;
-	char	*arg_tmp;
+	char	*to_print;
 
 	ret = 0;
-	arg_tmp = ft_strnew(1);
-	arg_tmp[0] = (unsigned char)ft_atoi(arg);
+	to_print = ft_strnew(1);
+	to_print[0] = (unsigned char)ft_atoi(arg);
 	if (options->precision >= 0)
-		arg_tmp = ft_apply_precision_str(options, arg_tmp);
+		to_print = ft_apply_precision_str(options, to_print);
 	if (options->width > 0)
-		arg_tmp = ft_apply_width(options, arg_tmp);
-	if (ft_has_flags(options->flags))
-		arg_tmp = (char *)ft_apply_flags(options, (wchar_t *)arg_tmp);
+		to_print = ft_apply_width(options, to_print);
+	if (ft_has_flags(options->flags) && to_print)
+		to_print = (char *)ft_apply_flags(options, (wchar_t *)to_print);
 	if (ft_atoi(arg) == 0)
 	{
 		if (options->flags->minus)
 			ft_putchar((unsigned char)ft_atoi(arg));
-		ret = ft_putstr(arg_tmp);
+		ret = ft_putstr(to_print);
 		if (!options->flags->minus)
 			ft_putchar((unsigned char)ft_atoi(arg));
 		ret++;
 	}
 	else
-		ret = ft_putstr(arg_tmp);
+		ret = ft_putstr(to_print);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:41:20 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:17 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int				ft_get_args(t_options *options, va_list ap)
 	else if (T_WCHAR_T_PTR <= type && type <= T_NOT_VALID_TYPE)
 		arg = ft_get_ptr_arg(options, ap);
 	ret = ft_proceed(options, arg);
+	free(arg);
 	return (ret);
 }
 

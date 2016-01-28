@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/15 09:11:59 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:10:51 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:15 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ wchar_t		*ft_get_ptr_arg(t_options *options, va_list ap)
 	arg = NULL;
 	type = options->type;
 	if (type == T_WCHAR_T_PTR)
-		arg = va_arg(ap, wchar_t *);
+		arg = ft_wstrdup(va_arg(ap, wchar_t *));
 	else if (type == T_CHAR_PTR)
 		arg = (wchar_t *)ft_strdup(va_arg(ap, char *));
 	else if (type == T_VOID_PTR)

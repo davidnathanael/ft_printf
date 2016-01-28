@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/26 23:19:33 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 11:54:50 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:22:47 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,19 @@
 char			*ft_apply_precision(t_options *options, char *arg)
 {
 	char	*ret;
+	char	*tmp;
 	size_t	len;
 
 	ret = ft_strdup(arg);
+	tmp = ret;
 	len = (arg[0] == '-') ? ft_strlen(arg) - 1 : ft_strlen(arg);
 	if ((int)len < options->precision)
-		ret = ft_prepend_zero(options->precision, arg);
+		ret = ft_prepend_zero(options->precision, ret);
 	else if (options->precision == 0 && ft_atoi(arg) == 0)
+	{
 		ret = ft_strdup("");
+		free(tmp);
+	}
 	free(arg);
 	return (ret);
 }
@@ -45,7 +50,6 @@ char			*ft_apply_precision_str(t_options *options, char *arg)
 		else
 			ret = ft_strdup(arg);
 	}
-	free(arg);
 	return (ret);
 }
 
@@ -73,7 +77,6 @@ char			*ft_apply_precision_ptr(t_options *options, char *arg,
 		else
 			ret = ft_strdup(arg);
 	}
-	free(arg);
 	return (ft_strjoin("0x", ret));
 }
 

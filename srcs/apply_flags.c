@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:31:10 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:10:21 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ wchar_t	*ft_apply_sharp_flag(t_specifier specifier, t_precision precision,
 		ret = ft_apply_sharp_flag_hexa(specifier, precision, flags, arg);
 	else
 		ret = ft_strdup(arg);
-	free(arg);
 	return ((wchar_t *)ret);
 }
 
@@ -111,29 +110,21 @@ wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
 
 wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 {
-	wchar_t		*arg_tmp;
-	t_flags		*flags;
-	t_specifier	specifier;
-	t_type		type;
+	wchar_t		*ret;
 
-	arg_tmp = arg;
-	flags = options->flags;
-	specifier = options->specifier;
-	type = options->type;
-	if (ft_has_flags(flags) && arg)
-	{
-		if (flags->zero && options->type == T_WCHAR_T_PTR)
-			arg = ft_apply_zero_flag_wstr(options->width, arg);
-		else if (flags->zero)
-			arg = ft_apply_zero_flag(options->width, (char *)arg);
-		if (flags->sharp && ft_strchr("oOxX", specifier))
-			arg = ft_apply_sharp_flag(specifier, options->precision,
-									options->flags, (char *)arg);
-		if (flags->space)
-			arg = ft_apply_space_flag(specifier, (char *)arg);
-		if (flags->plus
-			&& ((T_INT <= type && type <= T_SHORT) || type == T_INTMAX_T))
-			arg = ft_apply_plus_flag(options, (char *)arg);
-	}
-	return (arg);
+	ret = arg;
+	if (options->flags->zero && options->type == T_WCHAR_T_PTR)
+		ret = ft_apply_zero_flag_wstr(options->width, ret);
+	else if (options->flags->zero)
+		ret = ft_apply_zero_flag(options->width, (char *)ret);
+	if (options->flags->sharp && ft_strchr("oOxX", options->specifier))
+		ret = ft_apply_sharp_flag(options->specifier, options->precision,
+								options->flags, (char *)ret);
+	if (options->flags->space)
+		ret = ft_apply_space_flag(options->specifier, (char *)ret);
+	if (options->flags->plus
+		&& ((T_INT <= options->type && options->type <= T_SHORT)
+		|| options->type == T_INTMAX_T))
+		ret = ft_apply_plus_flag(options, (char *)ret);
+	return (ret);
 }

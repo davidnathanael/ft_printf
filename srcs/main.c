@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:19:48 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 13:03:22 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 09:56:15 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <stdint.h>
 #include <limits.h>
 #include <locale.h>
+#include <stdlib.h>
 
 int	main()
 {
@@ -25,6 +26,6 @@ int	main()
 		printf("Locale not set\n");
 	else
 		printf("Locale set to %s\n", l);
-	ft_printf("{%3*p}", 10, 0);
-	return (0);
+	ft_printf("{%05p}", &main);
+	free(l);
 }

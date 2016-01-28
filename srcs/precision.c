@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 09:26:34 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:23:41 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char			*ft_prepend_zero(t_precision precision, char *arg)
 		ret[i++] = '0';
 	while (*arg_tmp)
 		ret[i++] = *(arg_tmp++);
+	free(arg);
 	return (ret);
 }
 

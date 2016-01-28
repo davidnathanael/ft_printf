@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 08:07:37 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:34:22 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:11 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,16 @@ int			ft_proceed_wchar(t_options *options, wchar_t *arg)
 int			ft_proceed_wstr(t_options *options, wchar_t *arg)
 {
 	int		ret;
+	wchar_t	*to_print;
 
 	ret = 0;
+	to_print = ft_wstrdup(arg);
 	if (options->precision >= 0)
-		arg = ft_apply_precision_wstr(options, arg);
+		to_print = ft_apply_precision_wstr(options, to_print);
 	if (options->width > 0)
-		arg = ft_apply_width_wstr(options, arg);
-	if (ft_has_flags(options->flags))
-		arg = ft_apply_flags(options, arg);
-	ret = ft_putwstr(arg);
+		to_print = ft_apply_width_wstr(options, to_print);
+	if (ft_has_flags(options->flags) && to_print)
+		to_print = ft_apply_flags(options, to_print);
+	ret = ft_putwstr(to_print);
 	return (ret);
 }

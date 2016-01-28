@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 21:27:49 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/26 23:34:24 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/01/28 10:23:09 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,34 @@ int		ft_proceed_ptr(t_options *options, char *arg)
 {
 	int				ret;
 	unsigned long	atoi;
+	char			*to_print;
 
 	ret = 0;
 	atoi = ft_atoi_uns_long(arg);
+	to_print = ft_strdup(arg);
 	if (options->precision >= 0)
-		arg = ft_apply_precision_ptr(options, arg, atoi);
+		to_print = ft_apply_precision_ptr(options, to_print, atoi);
 	else
-		arg = ft_strjoin("0x", ft_itoa_base(atoi, "0123456789abcdef"));
+		to_print = ft_strjoin("0x", ft_itoa_base(atoi, "0123456789abcdef"));
 	if (options->width > 0)
-		arg = ft_apply_width(options, arg);
-	if (ft_has_flags(options->flags))
-		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
-	ret = ft_putstr(arg);
+		to_print = ft_apply_width(options, to_print);
+	if (ft_has_flags(options->flags) && to_print)
+		to_print = (char *)ft_apply_flags(options, (wchar_t *)to_print);
+	ret = ft_putstr(to_print);
 	return (ret);
 }
 
 int		ft_proceed_not_valid_type(t_options *options, char *arg)
 {
 	int	ret;
+	char	*to_print;
 
 	ret = 0;
+	to_print = ft_strdup(arg);
 	if (options->width > 0)
-		arg = ft_apply_width(options, arg);
-	if (ft_has_flags(options->flags))
-		arg = (char *)ft_apply_flags(options, (wchar_t *)arg);
-	ret = ft_putstr(arg);
+		to_print = ft_apply_width(options, to_print);
+	if (ft_has_flags(options->flags) && to_print)
+		to_print = (char *)ft_apply_flags(options, (wchar_t *)to_print);
+	ret = ft_putstr(to_print);
 	return (ret);
 }
