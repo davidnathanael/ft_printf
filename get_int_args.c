@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 12:16:24 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/28 10:23:15 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 14:08:18 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,19 @@ char	*ft_get_unsigned_args(t_options *options, va_list ap)
 	ret = NULL;
 	if (type == T_UNS_INT)
 		arg = va_arg(ap, unsigned int);
-	if (type == T_UNS_LONG)
+	else if (type == T_UNS_LONG)
 		arg = va_arg(ap, unsigned long);
-	if (type == T_UNS_LONG_LONG)
+	else if (type == T_UNS_LONG_LONG)
 		arg = va_arg(ap, unsigned long long);
-	if (type == T_UNS_SHORT)
+	else if (type == T_UNS_SHORT)
 		arg = (unsigned short)va_arg(ap, int);
-	if (type == T_UNS_CHAR)
+	else if (type == T_UNS_CHAR)
 		arg = (unsigned char)va_arg(ap, int);
-	if (type == T_UINTMAX_T)
+	else if (type == T_UINTMAX_T)
 		arg = va_arg(ap, unsigned long long);
-	if (type == T_SIZE_T)
+	else if (type == T_SIZE_T)
 		arg = va_arg(ap, size_t);
-	if (type == T_SSIZE_T)
+	else if (type == T_SSIZE_T)
 		return (ft_itoa_long_long(va_arg(ap, ssize_t)));
 	ret = ft_check_o_x_b(options, arg);
 	return (ret);

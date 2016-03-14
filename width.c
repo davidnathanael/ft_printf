@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/14 21:28:38 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/28 09:33:07 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 17:26:00 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ size_t		ft_get_len4width(t_options *options, char *arg)
 	return (len);
 }
 
-char		*ft_apply_width(t_options *options, char *arg)
+char		*ft_apply_width(t_options *options, char *arg, void *orig_arg)
 {
 	size_t	len;
 	char	*ret;
@@ -104,7 +104,8 @@ char		*ft_apply_width(t_options *options, char *arg)
 		else
 			ret = ft_strjoin(spaces, arg);
 	}
-	free(arg);
+	if (arg != orig_arg)
+		free(arg);
 	free(spaces);
 	return (ret);
 }

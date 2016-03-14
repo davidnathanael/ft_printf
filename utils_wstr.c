@@ -6,12 +6,13 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 13:32:14 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:32:22 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 17:15:13 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 #include "libft.h"
+#include <stdlib.h>
 
 wchar_t		*ft_get_spaces_wstr(t_width width)
 {
@@ -31,7 +32,8 @@ wchar_t		*ft_get_spaces_wstr(t_width width)
 	return (spaces);
 }
 
-wchar_t		*ft_apply_width_wstr(t_options *options, wchar_t *arg)
+wchar_t		*ft_apply_width_wstr(t_options *options, wchar_t *arg,
+			void *orig_arg)
 {
 	t_width	width;
 	int		len;
@@ -55,6 +57,8 @@ wchar_t		*ft_apply_width_wstr(t_options *options, wchar_t *arg)
 	}
 	else
 		return (arg);
+	if (arg != orig_arg)
+		free(arg);
 	return (ret);
 }
 

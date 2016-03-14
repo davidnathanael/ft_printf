@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/29 13:20:36 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/27 14:41:19 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:49:06 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,8 @@ t_flags				*ft_get_flags(char *format);
 t_bool				ft_has_flags(t_flags *flags);
 t_bool				ft_is_flag(char c);
 t_flags				*ft_check_flags(t_options *options, char *format);
-wchar_t				*ft_apply_flags(t_options *options, wchar_t *arg);
+wchar_t				*ft_apply_flags(t_options *options, wchar_t *arg,
+					void *orig_arg);
 wchar_t				*ft_apply_zero_flag_wstr(t_width width, wchar_t *arg);
 char				*ft_apply_sharp_flag_hexa(t_specifier specifier,
 					t_precision precision, t_flags *flags, char *arg);
@@ -146,8 +147,10 @@ t_type				ft_apply_j_modifier(t_specifier specifier);
 t_type				ft_apply_z_modifier(t_specifier specifier);
 
 int					ft_get_width(char *format, va_list ap);
-char				*ft_apply_width(t_options *options, char *arg);
-wchar_t				*ft_apply_width_wstr(t_options *options, wchar_t *arg);
+char				*ft_apply_width(t_options *options, char *arg,
+					void *orig_arg);
+wchar_t				*ft_apply_width_wstr(t_options *options, wchar_t *arg,
+					void *orig_arg);
 char				*ft_get_spaces(t_width width);
 
 int					ft_get_precision(char *format, va_list ap);

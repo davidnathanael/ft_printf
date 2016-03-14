@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/28 10:23:17 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:37:46 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int				ft_get_args(t_options *options, va_list ap)
 		arg = ft_get_ptr_arg(options, ap);
 	ret = ft_proceed(options, arg);
 	free(arg);
+	free(options->flags);
 	return (ret);
 }
 

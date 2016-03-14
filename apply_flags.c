@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 08:08:08 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/01/28 10:10:21 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/11 17:36:00 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,30 +85,32 @@ wchar_t	*ft_apply_space_flag(t_specifier specifier, char *arg)
 wchar_t	*ft_apply_plus_flag(t_options *options, char *arg)
 {
 	unsigned int	i;
+	char			*ret;
 
 	i = 0;
-	while (arg[i] && (!ft_isdigit(arg[0])) && arg[0])
+	ret = arg;
+	while (ret[i] && (!ft_isdigit(ret[0])) && ret[0])
 	{
-		if (arg[i] == '-')
+		if (ret[i] == '-')
 			break ;
-		if (ft_isdigit(arg[i]))
+		if (ft_isdigit(ret[i]))
 		{
-			arg[i - 1] = '+';
+			ret[i - 1] = '+';
 			break ;
 		}
 		i++;
 	}
-	if (*arg && ft_isdigit(arg[0]) && arg[0])
+	if (*ret && ft_isdigit(ret[0]) && ret[0])
 	{
-		if (arg[0] == '0' && arg[1] && options->flags->zero)
-			arg[0] = '+';
+		if (ret[0] == '0' && ret[1] && options->flags->zero)
+			ret[0] = '+';
 		else
-			arg = ft_strjoin("+", arg);
+			ret = ft_strjoin("+", arg);
 	}
-	return ((wchar_t *)arg);
+	return ((wchar_t *)ret);
 }
 
-wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
+wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg, void *orig_arg)
 {
 	wchar_t		*ret;
 
@@ -126,5 +128,6 @@ wchar_t	*ft_apply_flags(t_options *options, wchar_t *arg)
 		&& ((T_INT <= options->type && options->type <= T_SHORT)
 		|| options->type == T_INTMAX_T))
 		ret = ft_apply_plus_flag(options, (char *)ret);
+	(void)orig_arg;
 	return (ret);
 }
