@@ -36,7 +36,7 @@ char	*ft_get_signed_args(t_options *options, va_list ap)
 		arg = (char)va_arg(ap, int);
 	if (type == T_INTMAX_T)
 		arg = va_arg(ap, long long);
-	ret = ft_itoa_long_long(arg);
+	ret = ft_lltoa(arg);
 	return (ret);
 }
 
@@ -84,7 +84,7 @@ char	*ft_get_unsigned_args(t_options *options, va_list ap)
 	else if (type == T_SIZE_T)
 		arg = va_arg(ap, size_t);
 	else if (type == T_SSIZE_T)
-		return (ft_itoa_long_long(va_arg(ap, ssize_t)));
+		return (ft_lltoa(va_arg(ap, ssize_t)));
 	ret = ft_check_o_x_b(options, arg);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/08 14:28:56 by ddela-cr          #+#    #+#             */
-/*   Updated: 2016/03/11 16:37:46 by ddela-cr         ###   ########.fr       */
+/*   Updated: 2016/03/14 14:41:35 by ddela-cr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "libft.h"
 #include "printf.h"
 
-int				ft_get_args(t_options *options, va_list ap)
+static int				ft_get_args(t_options *options, va_list ap)
 {
 	wchar_t			*arg;
 	size_t			ret;
@@ -41,7 +41,7 @@ int				ft_get_args(t_options *options, va_list ap)
 	return (ret);
 }
 
-t_options		*ft_get_options(char *format, va_list ap)
+static t_options		*ft_get_options(char *format, va_list ap)
 {
 	t_options	*options;
 	char		*subformat;
