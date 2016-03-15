@@ -23,7 +23,7 @@ int		ft_proceed_ptr(t_options *options, char *arg)
 	char			*tmp;
 
 	ret = 0;
-	atoi = ft_atoi_uns_long(arg);
+	atoi = ft_ultoi(arg);
 	to_print = arg;
 	tmp = NULL;
 	if (options->precision >= 0)

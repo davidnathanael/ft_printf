@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi_uns_long.c                                 :+:      :+:    :+:   */
+/*   ft_ultoi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ddela-cr <ddela-cr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-unsigned long		ft_atoi_uns_long(const char *str)
+unsigned long		ft_ultoi(const char *str)
 {
 	unsigned long		ret;
 	unsigned int		i;
